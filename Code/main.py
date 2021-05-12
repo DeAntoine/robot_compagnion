@@ -6,11 +6,11 @@ import time
 
 def test():
     t1 = time.perf_counter()
-    for i in range(300):
+    for i in range(100):
         ret, frame = cap.read()
 
         dir = dp.detect(frame)
-        print(dir)
+        #print(dir)
     t2 = time.perf_counter()
     print(t2-t1)
 
