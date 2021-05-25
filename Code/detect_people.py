@@ -17,7 +17,7 @@ def detect(frame):
     boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])
     
     if np.size(weights) > 0:
-    
+        print("on est la")
         max = weights.max()
         index = np.where(weights == max)[0]
         
