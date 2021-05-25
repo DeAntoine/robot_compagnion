@@ -20,6 +20,8 @@ rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     
+    t1 = time.perf_counter()
+    
     frame = frame1.array
     
     cv2.imshow('img', frame)
@@ -53,8 +55,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         print("y a une faces")
 
-        cv2.imshow('img', frame)
-        cv2.waitKey(0)
+        #cv2.imshow('img', frame)
+        #cv2.waitKey(0)
 
         # detect head pose
         ang = hpe.estimate_pose(frame)
@@ -73,7 +75,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             print("deplacer le pointeur")
 
-
+    t2 = time.perf_counter()
+    print(t2-t1)
     rawCapture.truncate(0)
 
 # Arduino Esclave
