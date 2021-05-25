@@ -19,24 +19,40 @@ time.sleep(2)
 
 landmark_model = fl.get_landmark_model()
 
+
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
+i = 0
+t1 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-
+    
+    i = i +1
+    
+    if i >= 100:
+        break
+    
     frame = frame1.array
 
     #detect faces
     faces = getFaces(frame)
+    for face in faces :
+        
+        print("face detected")
+        
+        marks = fl.detect_marks(frame, landmark_model, face)
 
-    marks = fl.detect_marks(frame, landmark_model, faces)
+        fl.draw_marks(frame, marks)
+        
+        break
 
-    fl.draw_marks(frame, marks)
-
-    cv2.imshow('img', frame)
+    #cv2.imshow('image', frame)
+        
+    #cv2.waitKey(10)
 
     rawCapture.truncate(0)
 
-
+t2 = time.perf_counter()
+print(t2-t1)
 def test_dp(cap):
     t1 = time.perf_counter()
     for i in range(100):
