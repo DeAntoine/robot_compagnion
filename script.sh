@@ -2,7 +2,7 @@
 
 #PARAM généraux
 inputValues='resultat.txt'
-outputFile="graphe1.png"
+outputFile="graphe2.png"
 grapheTitle="Nombre de Fps dans le temps avec changement toutes les 10 secondes"
 xlabel="Milliseconde"
 ylabel="Nombre de Fps"
@@ -27,7 +27,7 @@ ymax=$bMax+1
 #PARAM médiane
 mediane=1 # 1 = true(activé) / 0 = false(desactivé)
 yminMed=10
-ymaxMed=10
+ymaxMed=12
 xminMed=$xmin
 xmaxMed=$xmax
 if [ $mediane = 1 ]; then
