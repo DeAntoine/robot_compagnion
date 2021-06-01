@@ -140,7 +140,7 @@ model_points = np.array([
 
 
 
-def estimate_pos(img):
+def estimate_pose(img):
 
     size = img.shape
 

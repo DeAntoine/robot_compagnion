@@ -272,7 +272,7 @@ def getFaces(frame):
 
 
 #camera.release()
-rawCapture.truncate(0)
+#rawCapture.truncate(0)
 
 cv2.destroyAllWindows()
 

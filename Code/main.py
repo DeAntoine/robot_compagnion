@@ -2,7 +2,8 @@ import detect_people as dp
 import liaison_serie as ls
 import head_pose_estimation as hpe
 from face_detector_yolo import getFaces
-
+from picamera import PiCamera
+from picamera.array import PiRGBArray
 import cv2
 import time
 
@@ -35,7 +36,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             # Send it to arduino
             print(dir_people)
-            ls.write(dir_people)
+            ls.write(to_bytes(dir_people))
 
         else :
 
