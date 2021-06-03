@@ -21,9 +21,6 @@ def angle_to_percent (angle) :
 def set_gpio(gpio_id) :
     GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     GPIO.setwarnings(False) #Disable warnings
-
-    #Use pin 12 for PWM signal
-    frequence = 50
     GPIO.setup(gpio_id, GPIO.OUT)
 
 
