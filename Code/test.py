@@ -28,7 +28,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #detect faces
     faces = getFaces(frame)
 
-    marks = fl.detect_marks(frame, landmark_model, face)
+    marks = fl.detect_marks(frame, landmark_model, faces)
 
     fl.draw_marks(frame, marks)
 
