@@ -42,7 +42,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             # deplacement aleatoire
             print("deplacement aleatoire")
-            exit()
+
 
     else :
 
