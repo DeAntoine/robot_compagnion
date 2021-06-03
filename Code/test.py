@@ -49,5 +49,3 @@ def test_dp(cap):
         #print(dir)
     t2 = time.perf_counter()
     print(t2-t1)
-
-face_model = fd.
