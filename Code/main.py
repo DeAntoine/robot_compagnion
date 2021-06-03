@@ -86,4 +86,4 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     # Recuperer direction pour aller vers l'objectif
 
     # Se mettre en mouvement vers cette direction
-"""
+
