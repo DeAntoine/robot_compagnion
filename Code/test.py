@@ -32,7 +32,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         marks = fl.detect_marks(frame, landmark_model, face)
 
-        draw_marks(frame, marks)
+        fl.draw_marks(frame, marks)
 
         cv2.imshow('img', frame)
         cv2.waitKey(0)
