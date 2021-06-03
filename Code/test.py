@@ -28,14 +28,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #detect faces
     faces = getFaces(frame)
 
-    for face in faces :
+    marks = fl.detect_marks(frame, landmark_model, face)
 
-        marks = fl.detect_marks(frame, landmark_model, face)
+    fl.draw_marks(frame, marks)
 
-        fl.draw_marks(frame, marks)
-
-        cv2.imshow('img', frame)
-        cv2.waitKey(0)
+    cv2.imshow('img', frame)
 
     rawCapture.truncate(0)
 
