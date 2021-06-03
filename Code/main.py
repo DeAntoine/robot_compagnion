@@ -25,7 +25,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     cv2.imshow('img', frame)
 
     #detect faces
-    faces = getFaces(img)
+    faces = getFaces(frame)
 
 
 
