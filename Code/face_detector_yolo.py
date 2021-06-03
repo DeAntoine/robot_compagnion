@@ -259,8 +259,13 @@ def getFaces(frame):
     #frame = draw_boxes(frame, boxes, obj_thresh, rect=False)
     #cv2.imshow('Face Detection', frame)
     #print('[INFO] length of boxes{}'.format(len(boxes)))
-    
-    return boxes
+
+    final_boxes = []
+
+    for box in boxes :
+        final_boxes.append([box.xmin, box.ymin, box.xmax, box.ymax])
+
+    return final_boxes
 
     
 #ret, frame = camera.read()

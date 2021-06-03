@@ -22,8 +22,12 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     
     frame = frame1.array
 
+    cv2.imshow('img', frame)
+
     #detect faces
     faces = getFaces(img)
+
+
 
     if len(faces) == 0 :
 
