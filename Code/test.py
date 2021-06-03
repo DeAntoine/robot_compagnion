@@ -17,7 +17,7 @@ camera.resolution = (320, 240)
 camera.framerate= 10
 time.sleep(2)
 
-landmark_model = get_landmark_model()
+landmark_model = fl.get_landmark_model()
 
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
