@@ -35,6 +35,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if dir_people != "r":
 
             # Send it to arduino
+            print("une peronne a ete detecte et pas son visage")
             print(dir_people)
             #ls.write(to_bytes(dir_people))
 
