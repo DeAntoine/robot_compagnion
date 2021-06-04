@@ -21,7 +21,11 @@ rawCapture = PiRGBArray(camera, size = (320,240))
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     
     frame = frame1.array
-
+    
+    cv2.imshow('img', frame)
+    
+    cv2.waitKey(5)
+    
     #detect faces
     faces = getFaces(frame)
 
