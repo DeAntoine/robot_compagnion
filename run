@@ -1,17 +1,23 @@
 #!/bin/bash
 
+ORANGE='\e[0;33m'
+echo_cmd(){
+	echo -e "${ORANGE}$1${NC}"
+}
+
+
 #update git
 sudo git pull
 
 if [ $# > 1 ]; then
-  if [ $1 = "test" ]; then
+  if [ $1 = "test" ] then
     cd Code
     python3 Test.py
     cd ..
     sudo bash script.sh
   else
     echo "commande :"
-    echo "run test"
+    echo_cmd "run test"
   fi
 fi
 
