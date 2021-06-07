@@ -30,7 +30,10 @@ if [ $# > 1 ]; then
       echo "bash script.sh"
     fi
     sudo bash script.sh
-    gpicview $outputFile
+    if [ "$2" = "-d" ]; then
+      echo "Graphe généré dans $outputFile"
+    fi
+    gpicview $outputFile &
   elif [ "$1" = "main" ]; then
     cd Code
     if [ "$2" = "-d" ]; then
