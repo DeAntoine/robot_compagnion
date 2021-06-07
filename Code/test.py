@@ -26,7 +26,7 @@ i = 0
 fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    if i >= 4:
+    if i >= 10:
         break
     if i != 0 :
         t1 = time.perf_counter()
