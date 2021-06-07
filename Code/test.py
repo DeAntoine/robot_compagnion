@@ -28,6 +28,7 @@ t0 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     t1 = time.perf_counter()
     fichier.write(str(t1-t0)+" 3\n")
+    fichier.write(str(t1-t0)+" 0\n")
     fichier.write(str(t1-t0)+" 1\n")
 
     i = i +1
