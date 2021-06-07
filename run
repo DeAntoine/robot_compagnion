@@ -24,6 +24,6 @@ if [ $# > 1 ]; then
   fi
 else
     echo "commande :"
-    echo_cmd "  run test"
+    echo_cmd "\trun test"
 fi
 
