@@ -31,7 +31,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     i = i +1
     
-    if i >= 10:
+    if i >= 15:
         break
     
     frame = frame1.array
