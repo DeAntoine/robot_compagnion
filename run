@@ -13,7 +13,7 @@ echo_cmd(){
 sudo git pull
 
 if [ $# > 1 ]; then
-  if [ $1 = "test" ] then
+  if [ "$1" = "test" ]; then
     cd Code
     python3 Test.py
     cd ..
@@ -22,5 +22,8 @@ if [ $# > 1 ]; then
     echo "commande :"
     echo_cmd "run test"
   fi
+else
+    echo "commande :"
+    echo_cmd "run test"
 fi
 
