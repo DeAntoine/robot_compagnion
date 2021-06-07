@@ -1,6 +1,9 @@
 #!/bin/bash
 
 ORANGE='\e[0;33m'
+NC='\e[0;m'
+
+
 echo_cmd(){
 	echo -e "${ORANGE}$1${NC}"
 }
