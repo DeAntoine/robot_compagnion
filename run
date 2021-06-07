@@ -8,7 +8,7 @@ echo_cmd(){
 	echo -e "\t${ORANGE}$1${NC}"
 }
 
-cd ~/Documents/robot_compagnion/
+cd ~/Documents/robot_compagnon/
 #update git
 sudo git pull
 
