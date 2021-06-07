@@ -23,9 +23,10 @@ landmark_model = fl.get_landmark_model()
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
 i = 0
-t1 = time.perf_counter()
+fichier = open("result.txt", "w") # "a" pour append et "w" pour écraser
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    
+    t1 = time.perf_counter()
+
     i = i +1
     
     if i >= 100:
@@ -50,9 +51,12 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #cv2.waitKey(10)
 
     rawCapture.truncate(0)
+    t2 = time.perf_counter()
+    fichier.write(t2+" "+t2-t1)
+    print(t2-t1)
 
-t2 = time.perf_counter()
-print(t2-t1)
+fichier.close()
+
 def test_dp(cap):
     t1 = time.perf_counter()
     for i in range(100):
