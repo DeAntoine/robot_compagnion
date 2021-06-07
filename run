@@ -15,9 +15,22 @@ sudo git pull
 if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
     cd Code
+    if [ "$2" = "-d" ]; then
+      echo "python3 Code/test.py"
+    fi
     python3 test.py
     cd ..
+    if [ "$2" = "-d" ]; then
+      echo "bash script.sh"
+    fi
     sudo bash script.sh
+  elif [ "$1" = "main" ];
+    cd Code
+    if [ "$2" = "-d" ]; then
+      echo "python3 Code/main.py"
+    fi
+    python3 main.py
+    cd ..
   else
     echo "commande :"
     echo_cmd "run test"
@@ -25,5 +38,7 @@ if [ $# > 1 ]; then
 else
     echo "commande :"
     echo_cmd "run test"
+    echo_cmd "run main"
+    echo_cmd '[CMD] -d #pour le débug'
 fi
 
