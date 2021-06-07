@@ -50,11 +50,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #cv2.imshow('image', frame)
         
     #cv2.waitKey(10)
-
-    rawCapture.truncate(0)
     t2 = time.perf_counter()
     fichier.write(str(t2-t0)+" "+str(1/(t2-t1))+"\n")
     print(str(1/(t2-t1))+" fps")
+
+    rawCapture.truncate(0)
 
 fichier.close()
 
