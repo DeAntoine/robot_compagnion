@@ -11,7 +11,7 @@ echo_cmd(){
 }
 echo_debug(){
   if [ "$2" = "-d" ]; then
-	  echo -e "\t${LIGHT_CYAN}$1${NC}"
+	  echo -e "${LIGHT_CYAN}$1${NC}"
 	fi
 }
 
