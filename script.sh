@@ -13,7 +13,7 @@ aMin=($(sort -g -k 1 $inputValues | sed -n '1p;$p' | cut -d' ' -f1))
 aMax=($(sort -g -k 1 -r $inputValues | sed -n '1p;$p' | cut -d' ' -f1))
 
 # min et max pour l'abscice
-xmin=0
+xmin=$aMin
 xmax=$aMax
  
 bMin=($(sort -g -k 2 $inputValues | sed -n '1p;$p' | cut -d' ' -f2))
