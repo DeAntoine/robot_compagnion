@@ -27,6 +27,7 @@ fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     t1 = time.perf_counter()
+    fichier.write(str(t1-t0)+" 1\n")
 
     i = i +1
     
@@ -34,9 +35,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         break
     
     frame = frame1.array
+    t1 = time.perf_counter()
 
     #detect faces
     faces = getFaces(frame)
+    t2 = time.perf_counter()
+    fichier.write(str(t2-t0)+" 1\n")
+    fichier.write(str(t2-t0)+" 2\n")
+
     for face in faces :
         
         print("face detected")
@@ -50,11 +56,13 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #cv2.imshow('image', frame)
         
     #cv2.waitKey(10)
-    t2 = time.perf_counter()
-    fichier.write(str(t2-t0)+" "+str(1/(t2-t1))+"\n")
-    print(str(1/(t2-t1))+" fps")
+    t3 = time.perf_counter()
+    print(str(1/(t3-t1))+" fps")
+    fichier.write(str(t3-t0)+" 2\n")
 
     rawCapture.truncate(0)
+
+
 
 fichier.close()
 
