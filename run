@@ -7,6 +7,12 @@ NC='\e[0;m'
 echo_cmd(){
 	echo -e "\t${ORANGE}$1${NC}"
 }
+echo_help(){
+    echo "commande :"
+    echo_cmd "run test"
+    echo_cmd "run main"
+    echo_cmd '[CMD] -d #pour le débug'
+}
 
 cd ~/Documents/robot_compagnon/
 #update git
@@ -32,13 +38,9 @@ if [ $# > 1 ]; then
     python3 main.py
     cd ..
   else
-    echo "commande :"
-    echo_cmd "run test"
+    echo_help
   fi
 else
-    echo "commande :"
-    echo_cmd "run test"
-    echo_cmd "run main"
-    echo_cmd '[CMD] -d #pour le débug'
+  echo_help
 fi
 
