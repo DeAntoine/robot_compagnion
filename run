@@ -15,7 +15,7 @@ sudo git pull
 if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
     cd Code
-    python3 Test.py
+    python3 test.py
     cd ..
     sudo bash script.sh
   else
