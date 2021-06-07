@@ -26,7 +26,7 @@ i = 0
 fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    if i >= 10:
+    if i >= 2:
         break
 
     if i != 0 :
@@ -42,6 +42,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     if i != 0 :
         t2 = time.perf_counter()
         fichier.write(str(t2-t0)+" 1\n")
+        fichier.write(str(t1-t0)+" 0\n")
         fichier.write(str(t2-t0)+" 2\n")
 
     for face in faces :
@@ -61,6 +62,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         t3 = time.perf_counter()
         print(str(1/(t3-t1))+" fps")
         fichier.write(str(t3-t0)+" 2\n")
+        fichier.write(str(t1-t0)+" 0\n")
         fichier.write(str(t3-t0)+" 3\n")
 
     rawCapture.truncate(0)
