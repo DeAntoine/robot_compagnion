@@ -26,17 +26,14 @@ i = 0
 fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    if i >= 4:
+        break
     if i != 0 :
         t1 = time.perf_counter()
         if i != 1:
             fichier.write(str(t1-t0)+" 3\n")
         fichier.write(str(t1-t0)+" 0\n")
         fichier.write(str(t1-t0)+" 1\n")
-
-    i = i +1
-    
-    if i >= 4:
-        break
     
     frame = frame1.array
     #detect faces
@@ -66,6 +63,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t3-t0)+" 3\n")
 
     rawCapture.truncate(0)
+    i = i +1
 
 
 

@@ -26,6 +26,7 @@ echo_help(){
 
 cd ~/Documents/robot_compagnon/
 #update git
+echo_debug "git pull" $2
 sudo git pull
 
 if [ $# > 1 ]; then
