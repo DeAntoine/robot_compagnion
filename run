@@ -5,7 +5,7 @@ NC='\e[0;m'
 
 
 echo_cmd(){
-	echo -e "/\t${ORANGE}$1${NC}"
+	echo -e "\t${ORANGE}$1${NC}"
 }
 
 cd ~/Documents/robot_compagion/
