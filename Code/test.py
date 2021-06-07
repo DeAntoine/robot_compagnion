@@ -52,7 +52,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     rawCapture.truncate(0)
     t2 = time.perf_counter()
-    fichier.write(t2+" "+t2-t1)
+    fichier.write(str(t2)+" "+str(t2-t1))
     print(t2-t1)
 
 fichier.close()
