@@ -34,8 +34,6 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t1-t0)+" 0\n")
         fichier.write(str(t1-t0)+" 2\n")
 
-    if i >= 3:
-        break
     frame = frame1.array
     #detect faces
     faces = getFaces(frame)
@@ -68,6 +66,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t3-t0)+" 1\n")
 
     rawCapture.truncate(0)
+
+    if i >= 3:
+        break
 
 
 
