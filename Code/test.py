@@ -23,7 +23,7 @@ landmark_model = fl.get_landmark_model()
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
 i = 0
-fichier = open("result.txt", "w") # "a" pour append et "w" pour écraser
+fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
     t1 = time.perf_counter()
