@@ -32,7 +32,7 @@ if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
     cd Code
     echo_debug "python3 Code/test.py" $2
-    python3 test.py
+    python3 test.py 2> test.log
     cd ..
     echo_debug "bash script.sh" $2
     sudo bash script.sh
