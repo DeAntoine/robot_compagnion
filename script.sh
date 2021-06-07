@@ -25,9 +25,9 @@ ymax=$bMax+1
 
 
 #PARAM médiane
-mediane=1 # 1 = true(activé) / 0 = false(desactivé)
-yminMed=10
-ymaxMed=12
+mediane=0 # 1 = true(activé) / 0 = false(desactivé)
+yminMed=1
+ymaxMed=1
 xminMed=$xmin
 xmaxMed=$xmax
 if [ $mediane = 1 ]; then
