@@ -47,6 +47,8 @@ if [ $# > 1 ]; then
     cd ..
   elif [ "$1" = "main" ]; then
     echo "i'm running, make run start for the real main"
+    gpicview ~/Documents/robot_compagnon/graphe2.png &
+
   else
     echo_help
   fi
