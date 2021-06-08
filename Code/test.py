@@ -76,10 +76,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t3-t0)+" 1\n")
 
     rawCapture.truncate(0)
-
+    '''
     if i >= 3:
         break
-
+    '''
 
 
 fichier.close()
