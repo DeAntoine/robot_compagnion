@@ -139,10 +139,14 @@ class PoseEstimator:
                                           self.dist_coeefs)
         point_2d = np.int32(point_2d.reshape(-1, 2))
 
+        print(rotation_vector)
+        print(translation_vector)
+        print(point_2d)
+
         # Draw all the lines
         cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)
         
-        #cv2.line(image, tuple(point_2d[1]), tuple(point_2d[6]), color, line_width, cv2.LINE_AA)
+        cv2.line(image, tuple(point_2d[1]), tuple(point_2d[6]), color, line_width, cv2.LINE_AA)
         cv2.line(image, tuple(point_2d[2]), tuple(
             point_2d[7]), color, line_width, cv2.LINE_AA)
         cv2.line(image, tuple(point_2d[3]), tuple(
