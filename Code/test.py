@@ -22,8 +22,8 @@ landmark_model = fl.get_landmark_model()
 
 pin1 = 17
 pin2 = 27
-s.set_gpio(pin1)
-s.set_gpio(pin2)
+#s.set_gpio(pin1)
+#s.set_gpio(pin2)
 
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
