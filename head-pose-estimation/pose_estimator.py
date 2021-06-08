@@ -141,7 +141,7 @@ class PoseEstimator:
         point_2d = np.int32(point_2d.reshape(-1, 2))
 
         print(point_2d)
-        print((point_2d[0]+point_2d[1]+point_2d[3]+point_2d[4])/2)
+        print((point_2d[0]+point_2d[1]+point_2d[3]+point_2d[4])/4)
 
         # Draw all the lines
         cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)
