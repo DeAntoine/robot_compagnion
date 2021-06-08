@@ -8,6 +8,7 @@ from picamera.array import PiRGBArray
 import cv2
 import time
 import servo as s
+from headpose import PoseEstimator
 
 '''
 Initialisation du programme
@@ -17,7 +18,7 @@ camera = PiCamera()
 camera.resolution = (320, 240)
 camera.framerate= 10
 time.sleep(2)
-
+'''
 landmark_model = fl.get_landmark_model()
 
 pin1 = 17
@@ -40,7 +41,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t1-t0)+" 2\n")
 
     frame = frame1.array
-    '''
+    
     #detect faces
     faces = getFaces(frame)
     if i != 0 :
@@ -58,7 +59,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fl.draw_marks(frame, marks)
         
         break
-    '''
+    
     ang = hpe.estimate_pose(frame)
     
     print(ang)
@@ -76,13 +77,22 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t3-t0)+" 1\n")
 
     rawCapture.truncate(0)
-    '''
+   
     if i >= 3:
         break
+   
     '''
+est = PoseEstimator()  #load the model
+rawCapture = PiRGBArray(camera, size = (320,240))
 
+for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    
+    frame = frame1.array
+    roll, pitch, yawn = est.pose_from_image(frame)  # estimate the head pose
+    est.plot_face_detection_marks(frame)  # plot the image with the face detection marks
+    rawCapture.truncate(0)
 
-fichier.close()
+#fichier.close()
 
 def test_dp(cap):
     t1 = time.perf_counter()
