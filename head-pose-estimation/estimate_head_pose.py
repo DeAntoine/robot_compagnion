@@ -142,10 +142,10 @@ def main():
             # pose_estimator.draw_annotation_box(frame, pose[0], pose[1], color=(255, 128, 128))
 
             # Uncomment following line to draw stabile pose annotation on frame.
-            # pose_estimator.draw_annotation_box(frame, steady_pose[0], steady_pose[1], color=(128, 255, 128))
+            pose_estimator.draw_annotation_box(frame, steady_pose[0], steady_pose[1], color=(128, 255, 128))
 
             # Uncomment following line to draw head axes on frame.
-            pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
+            # pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
 
         # Show preview.
         cv2.imshow("Preview", frame)
