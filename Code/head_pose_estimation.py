@@ -202,24 +202,24 @@ def estimate_pose(img):
             ang2 = 90
         
             # print('div by zero error')
-        """
+        
         if ang1 >= 48:
-            #print('Head down')
-            cv2.putText(img, 'Head down', (30, 30), font, 2, (255, 255, 128), 3)
+            print('Head down')
+            #cv2.putText(img, 'Head down', (30, 30), font, 2, (255, 255, 128), 3)
         elif ang1 <= -48:
-            #print('Head up')
-            cv2.putText(img, 'Head up', (30, 30), font, 2, (255, 255, 128), 3)
+            print('Head up')
+            #cv2.putText(img, 'Head up', (30, 30), font, 2, (255, 255, 128), 3)
          
         if ang2 >= 48:
-            #print('Head right')
-            cv2.putText(img, 'Head right', (90, 30), font, 2, (255, 255, 128), 3)
+            print('Head right')
+            #cv2.putText(img, 'Head right', (90, 30), font, 2, (255, 255, 128), 3)
         elif ang2 <= -48:
-            #print('Head left')
-            cv2.putText(img, 'Head left', (90, 30), font, 2, (255, 255, 128), 3)
+            print('Head left')
+            #cv2.putText(img, 'Head left', (90, 30), font, 2, (255, 255, 128), 3)
         
-        cv2.putText(img, str(ang1), tuple(p1), font, 2, (128, 255, 255), 3)
-        cv2.putText(img, str(ang2), tuple(x1), font, 2, (255, 255, 128), 3)
-        """
+        #cv2.putText(img, str(ang1), tuple(p1), font, 2, (128, 255, 255), 3)
+        #cv2.putText(img, str(ang2), tuple(x1), font, 2, (255, 255, 128), 3)
+        
         #print("angle 1 : "+str(ang1))
         #print("angle 2 : "+str(ang2))
 
