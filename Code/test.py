@@ -7,6 +7,7 @@ from picamera import PiCamera
 from picamera.array import PiRGBArray
 import cv2
 import time
+import servo as s
 
 '''
 Initialisation du programme
@@ -19,6 +20,10 @@ time.sleep(2)
 
 landmark_model = fl.get_landmark_model()
 
+pin1 = 17
+pin2 = 27
+s.set_gpio(pin1)
+s.set_gpio(pin2)
 
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
@@ -35,6 +40,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(t1-t0)+" 2\n")
 
     frame = frame1.array
+    '''
     #detect faces
     faces = getFaces(frame)
     if i != 0 :
@@ -52,7 +58,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fl.draw_marks(frame, marks)
         
         break
-
+    '''
+    ang = hpe.estimate_pose(frame)
+    
+    print(ang)
+    
     cv2.imshow('image', frame)
         
     cv2.waitKey(1)
