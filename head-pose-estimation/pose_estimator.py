@@ -142,8 +142,7 @@ class PoseEstimator:
         # Draw all the lines
         cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)
         
-        cv2.line(image, tuple(point_2d[1]), tuple(
-            point_2d[6]), color, line_width, cv2.LINE_AA)
+        #cv2.line(image, tuple(point_2d[1]), tuple(point_2d[6]), color, line_width, cv2.LINE_AA)
         cv2.line(image, tuple(point_2d[2]), tuple(
             point_2d[7]), color, line_width, cv2.LINE_AA)
         cv2.line(image, tuple(point_2d[3]), tuple(
@@ -166,10 +165,6 @@ class PoseEstimator:
 
     def draw_axes(self, img, R, t):
         img	= cv2.drawFrameAxes(img, self.camera_matrix, self.dist_coeefs, R, t, 30)
-        print("R")
-        print(R)
-        print("t")
-        print(t)
 
 
     def get_pose_marks(self, marks):
