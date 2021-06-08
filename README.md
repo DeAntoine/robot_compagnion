@@ -2,7 +2,7 @@
 projet de synthèse 
 
 ## commande
-Pour démarrer la robot
+Pour démarrer le robot
 ```
 run main
 ```
@@ -16,5 +16,5 @@ Il faut une carte raspberry avec open-cv installé et tensro-flow (voir tuto d'i
 
 Penser aussi a faire pour le script qui trace les graphes
 ```
-apt-get install gnuplot
+apt-get install gnuplot screen ttylog
 ```
