@@ -131,7 +131,6 @@ class PoseEstimator:
         point_3d.append((-front_size, -front_size, front_depth))
         point_3d = np.array(point_3d, dtype=np.float).reshape(-1, 3)
 
-        print(point_3d)
 
         # Map to 2d image points
         (point_2d, _) = cv2.projectPoints(point_3d,
@@ -143,6 +142,8 @@ class PoseEstimator:
 
         print(rotation_vector)
         print(translation_vector)
+        print(self.dist_coeefs)
+        print(self.camera_matrix)
         print(point_2d)
 
         # Draw all the lines
