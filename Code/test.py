@@ -65,7 +65,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if dir_people != "r":
 
             # Send it to arduino
-            print("une peronne a ete detecte et pas son visage")
+            print("une personne a ete detecte et pas son visage")
             print(dir_people)
             #ls.write(to_bytes(dir_people))
 
@@ -119,8 +119,6 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     t4 = time.perf_counter()
     i=i+1
     if i != 1 :
-        if i == 2 :
-            break
         if len(faces) == 0 :
             fichier.write(str(t4-t0)+" 3\n")
         else :
@@ -129,6 +127,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         t0 = time.perf_counter()
 
     fichier.write(str(t4-t0)+" 0\n")
+    if i == 2 :
+        break
     fichier.write(str(t4-t0)+" 1\n")
 
 # Arduino Esclave

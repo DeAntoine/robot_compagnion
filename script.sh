@@ -2,10 +2,10 @@
 
 #PARAM généraux
 inputValues='resultat.txt'
-outputFile="graphe2.png"
-grapheTitle="Nombre de Fps dans le temps avec changement toutes les 10 secondes"
-xlabel="Milliseconde"
-ylabel="Nombre de Fps"
+outputFile="graphe_etat.png"
+grapheTitle="Temps d'éxécution de chaque état"
+xlabel="Temps (en seconde)"
+ylabel="Etat du code"
 
 
 
