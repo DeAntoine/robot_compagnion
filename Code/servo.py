@@ -39,3 +39,5 @@ def stop_gpio(gpio_id) :
 set_gpio(13)
 set_servo_angle(13,90)
 stop_gpio(13)
+
+
