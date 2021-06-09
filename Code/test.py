@@ -46,13 +46,16 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     cv2.waitKey(5)
 
-    #detect faces
-    faces = getFaces(frame)
+
+
     if i != 0 :
         t2 = time.perf_counter()
         fichier.write(str(t2-t0)+" 2\n")
         fichier.write(str(t2-t0)+" 0\n")
         fichier.write(str(t2-t0)+" 3\n")
+
+    #detect faces
+    faces = getFaces(frame)
 
     if len(faces) == 0 :
 
