@@ -31,10 +31,10 @@ sudo git pull
 
 if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
-    cd head-pose-estimation
-    echo_debug "python3 head-pose-estimation/test.py" $2
+    cd Code
+    echo_debug "python3 Code/test.py" $2
     #python3 test.py 2> test.log
-    python3 estimate_head_pose.py
+    python3 test.py
     cd ..
     echo_debug "bash script.sh" $2
     sudo bash script.sh
