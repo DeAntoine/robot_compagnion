@@ -1,5 +1,5 @@
 import detect_people as dp
-#import liaison_serie as ls
+import liaison_serie as ls
 #import estimate_head_pose as hpe
 from face_detector_yolo import getFaces
 from picamera import PiCamera
@@ -24,7 +24,7 @@ i = 0
 fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 
-serialArduino = serial.Serial('/dev/ttyACM0', 9600)
+#serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -82,15 +82,15 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         if ang > 50 :
 
-            #ls.write("g")
+            ls.write(to_bytes("g"))
             print("g")
-            serialArduino.write(to_bytes("g"))
+            #serialArduino.write(to_bytes("g"))
 
         elif ang < 40 :
 
-            #ls.write("d")
+            ls.write(to_bytes("d"))
             print("d")
-            serialArduino.write(to_bytes("d"))
+            #serialArduino.write(to_bytes("d"))
 
         else :
 
