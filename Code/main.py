@@ -1,11 +1,12 @@
 import detect_people as dp
 #import liaison_serie as ls
-import head_pose_estimation as hpe
+import estimate_head_pose as hpe
 from face_detector_yolo import getFaces
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 import cv2
 import time
+import serial
 
 '''
 Initialisation du programme
@@ -18,10 +19,23 @@ time.sleep(2)
 
 rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
+
+i = 0
+fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
+t0 = time.perf_counter()
+
+serialArduino = serial.Serial('/dev/ttyXXXX', 9600)
+ang = 30
+
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    
-    t1 = time.perf_counter()
-    
+
+    if i != 0 :
+        t1 = time.perf_counter()
+        fichier.write(str(t1-t0)+" 1\n")
+        fichier.write(str(t1-t0)+" 0\n")
+        fichier.write(str(t1-t0)+" 2\n")
+
+
     frame = frame1.array
     
     cv2.imshow('img', frame)
@@ -59,17 +73,24 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         #cv2.waitKey(0)
 
         # detect head pose
-        ang = hpe.estimate_pose(frame)
+        # ang = hpe.estimate_pose(frame)
+
+        if(ang == 60):
+            ang = 30
+        else :
+            ang = 60
 
         if ang > 50 :
 
             #ls.write("g")
             print("g")
+            serialArduino.write("g")
 
         elif ang < 40 :
 
             #ls.write("d")
             print("d")
+            serialArduino.write("d")
 
         else :
 

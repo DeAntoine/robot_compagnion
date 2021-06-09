@@ -108,17 +108,17 @@ def main():
     rawCapture = PiRGBArray(camera, size = (320,240))
 
     GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
-    GPIO.setwarnings(False) #Disable warnings
+    #GPIO.setwarnings(False) #Disable warnings
 
     #Use pin id for PWM signal
     frequence = 50
     GPIO.setup(12, GPIO.OUT)
     pwm_12 = GPIO.PWM(12, frequence)
-    pwm_12.start(angle_to_percent(90))
+    pwm_12.start(0)
 
     GPIO.setup(32, GPIO.OUT)
     pwm_32 = GPIO.PWM(32, frequence)
-    pwm_32.start(angle_to_percent(90))
+    pwm_32.start(0)
 
     GPIO.setup(15, GPIO.OUT)
     GPIO.output(15, GPIO.HIGH)
