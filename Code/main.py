@@ -24,7 +24,7 @@ i = 0
 fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 
-serialArduino = serial.Serial('/dev/ttyXXXX', 9600)
+serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
