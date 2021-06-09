@@ -39,6 +39,7 @@ if [ $# > 1 ]; then
     echo_debug "bash script.sh" $2
     sudo bash script.sh
     echo_debug "Graphe généré dans $outputFile" $2
+    echo "Graphe généré dans $outputFile"
     gpicview $outputFile &
   elif [ "$1" = "start" ]; then
     cd Code
