@@ -158,7 +158,7 @@ class PoseEstimator:
 
         frequence = 50
         pwm_12.ChangeDutyCycle(angle_to_percent(90+direction[0]))
-        pwm.32.ChangeDutyCycle(angle_to_percent(90+direction[1]))
+        pwm_32.ChangeDutyCycle(angle_to_percent(90+direction[1]))
 
 
 
