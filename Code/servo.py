@@ -37,5 +37,5 @@ def stop_gpio(gpio_id) :
     GPIO.cleanup()
 
 set_gpio(17)
-ser_servo_angler (17,90)
+set_servo_angle(17,90)
 stop_gpio(17)
