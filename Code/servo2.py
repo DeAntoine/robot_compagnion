@@ -17,7 +17,7 @@ def angle_to_percent (angle) :
 
     return start + angle_as_percent
 
-def set_servo_angle(id_gpio,angle)
+def set_servo_angle(id_gpio,angle) :
     GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     GPIO.setwarnings(False) #Disable warnings
 
