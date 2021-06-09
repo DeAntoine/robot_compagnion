@@ -35,10 +35,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     time_start = time.perf_counter()
     curr_time = time.perf_counter()
     if i != 0 :
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
-        fichier.write(str(curr_time-t0)+" "+str(compte+1)+"1\n")
         compte=compte+1
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
     frame = frame1.array
 
@@ -51,10 +51,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     curr_time = time.perf_counter()
     if i != 0 :
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
-        fichier.write(str(curr_time-t0)+" "+str(compte+1)+"1\n")
         compte=compte+1
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+
 
 
     if len(faces) == 0 :
@@ -89,10 +90,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         curr_time = time.perf_counter()
         if i != 0 :
-            fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
             fichier.write(str(curr_time-t0)+" 0\n")
-            fichier.write(str(curr_time-t0)+" "+str(compte+1)+"1\n")
             compte=compte+1
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
 
         if(ang == 60):
@@ -122,16 +123,15 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     rawCapture.truncate(0)
     i=i+1
 
+
     curr_time = time.perf_counter()
     if i != 0 :
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
         if i == 2 :
             break
         compte=1
-        fichier.write(str(curr_time-t0)+" 1\n")
-
-
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
 # Arduino Esclave
 
