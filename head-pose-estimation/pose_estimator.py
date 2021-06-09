@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 
-
+from servo import set_servo_angle
 class PoseEstimator:
     """Estimate head pose according to the facial landmarks"""
 
@@ -139,8 +139,11 @@ class PoseEstimator:
                                           self.camera_matrix,
                                           self.dist_coeefs)
         point_2d = np.int32(point_2d.reshape(-1, 2))
+        direction = (point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4
+        print(direction)
 
-        print((point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4)
+        set_servo_angle(12,direction[0])
+        set_servo_angle(32,direction[1])
 
         # Draw all the lines
         cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)
