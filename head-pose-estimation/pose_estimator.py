@@ -142,6 +142,8 @@ class PoseEstimator:
         direction = (point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4
         print(direction[0])
 
+
+
         set_servo_angle(12,direction[0])
         set_servo_angle(32,direction[1])
 

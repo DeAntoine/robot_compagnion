@@ -17,6 +17,18 @@ def angle_to_percent (angle) :
 
     return start + angle_as_percent
 
+def setup_gpio(id):
+    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
+    GPIO.setwarnings(False) #Disable warnings
+
+    #Use pin id for PWM signal
+    pwm_gpio = id
+    frequence = 50
+    GPIO.setup(pwm_gpio, GPIO.OUT)
+    pwm = GPIO.PWM(pwm_gpio, frequence)
+
+    pwm.start(angle_to_percent(90))
+
 def set_servo_angle(id,angle) :
     GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     GPIO.setwarnings(False) #Disable warnings
@@ -28,10 +40,18 @@ def set_servo_angle(id,angle) :
     pwm = GPIO.PWM(pwm_gpio, frequence)
 
     #Init at 0°
-    pwm.start(angle_to_percent(90+angle))
+    pwm.ChangeDutyCycle(angle_to_percent(90+angle))
 
     #Close GPIO & cleanup
     #pwm.stop()
     #GPIO.cleanup()
+
+def close_gpio(id){
+    frequence = 50
+    pwm = GPIO.PWM(id, frequence)
+    pwm.stop()
+    GPIO.cleanup()
+
+}
 
 set_servo_angle(12,20)

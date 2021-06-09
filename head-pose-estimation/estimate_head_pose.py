@@ -19,6 +19,7 @@ from pose_estimator import PoseEstimator
 from stabilizer import Stabilizer
 
 import time
+import servo
 
 print("OpenCV version: {}".format(cv2.__version__))
 
@@ -93,7 +94,9 @@ def main():
 
         
     rawCapture = PiRGBArray(camera, size = (320,240))
-    
+    servo.setup_gpio(12)
+    servo.setup_gpio(32)
+
 #while camera.isOpened():
     for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
@@ -157,7 +160,8 @@ def main():
     # Clean up the multiprocessing process.
     box_process.terminate()
     box_process.join()
-
+    servo.close_gpio(12)
+    servo.close_gpio(32)
 
 if __name__ == '__main__':
     main()
