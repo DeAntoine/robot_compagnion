@@ -46,12 +46,11 @@ def set_servo_angle(id,angle) :
     #pwm.stop()
     #GPIO.cleanup()
 
-def close_gpio(id){
+def close_gpio(id) :
     frequence = 50
     pwm = GPIO.PWM(id, frequence)
     pwm.stop()
     GPIO.cleanup()
 
-}
 
 set_servo_angle(12,20)
