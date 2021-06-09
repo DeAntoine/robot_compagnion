@@ -38,7 +38,7 @@ if [ $# > 1 ]; then
     cd ..
     echo_debug "bash script.sh" $2
     sudo bash script.sh
-    outputGraphe = ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1
+    outputGraphe < ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1
     echo_debug "Graphe généré dans $outputGraphe" $2
     echo "Graphe généré dans $outputGraphe"
     gpicview $outputFile &
