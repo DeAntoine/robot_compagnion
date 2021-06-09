@@ -5,7 +5,7 @@ import numpy as np
 class PoseEstimator:
     """Estimate head pose according to the facial landmarks"""
 
-    def angle_to_percent (angle) :
+    def angle_to_percent (self,angle) :
         if angle > 180 or angle < 0 :
             return False
 
@@ -152,13 +152,14 @@ class PoseEstimator:
                                           self.dist_coeefs)
         point_2d = np.int32(point_2d.reshape(-1, 2))
         direction = (point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4
-        print(direction[0])
+        dir_12 = 90 + direction[0]
+        dir_32 = 90 + direction[1]
 
 
 
         frequence = 50
-        pwm_12.ChangeDutyCycle(self.angle_to_percent(90+direction[0]))
-        pwm_32.ChangeDutyCycle(self.angle_to_percent(90+direction[1]))
+        pwm_12.ChangeDutyCycle(self.angle_to_percent(dir_12))
+        pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_32))
 
 
 
