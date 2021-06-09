@@ -29,8 +29,8 @@ ang = 30
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
+    t1 = time.perf_counter()
     if i != 0 :
-        t1 = time.perf_counter()
         fichier.write(str(t1-t0)+" 1\n")
         fichier.write(str(t1-t0)+" 0\n")
         fichier.write(str(t1-t0)+" 2\n")
