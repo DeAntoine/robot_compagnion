@@ -2,7 +2,7 @@
 
 #PARAM généraux
 inputValues='resultat_etat.txt'
-outputFile="graphe_etat.png"
+export outputFile="graphe_etat.png"
 grapheTitle="Temps d execution de chaque etat"
 xlabel="Temps (en seconde)"
 ylabel="Etat du code"
