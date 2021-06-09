@@ -2,7 +2,7 @@
 
 #PARAM généraux
 inputValues='resultat_etat.txt'
-export outputFile="graphe_etat.png"
+outputFile="graphe_etat.png"
 grapheTitle="Temps d execution de chaque etat"
 xlabel="Temps (en seconde)"
 ylabel="Etat du code"
@@ -65,3 +65,4 @@ if [ $mediane = 1 ]; then
 fi
 gnuplot gnuplot_script 
 rm gnuplot_script 
+export outputFile
