@@ -117,7 +117,7 @@ def main():
     pwm_12.start(angle_to_percent(90))
 
     GPIO.setup(32, GPIO.OUT)
-    pwm_32 = GPIO.PWM(23, frequence)
+    pwm_32 = GPIO.PWM(32, frequence)
     pwm_32.start(angle_to_percent(90))
 
 
