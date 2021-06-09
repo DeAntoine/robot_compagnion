@@ -19,7 +19,7 @@ def angle_to_percent (angle) :
 
 
 def set_gpio(gpio_id) :
-    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
+    GPIO.setmode(GPIO.BCM) #Use Board numerotation mode
     GPIO.setwarnings(False) #Disable warnings
     GPIO.setup(gpio_id, GPIO.OUT)
 
@@ -35,3 +35,7 @@ def stop_gpio(gpio_id) :
     pwm = GPIO.PWM(gpio_id, frequence)
     pwm.stop()
     GPIO.cleanup()
+
+set_gpio(17)
+ser_servo_angler (17,90)
+stop_gpio(17)
