@@ -32,11 +32,11 @@ serialArduino.write(b'g')
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
+    time_start = time.perf_counter()
     t1 = time.perf_counter()
-    if i != 0 :
-        fichier.write(str(t1-t0)+" 1\n")
-        fichier.write(str(t1-t0)+" 0\n")
-        fichier.write(str(t1-t0)+" 2\n")
+    fichier.write(str(t1-t0)+" 1\n")
+    fichier.write(str(t1-t0)+" 0\n")
+    fichier.write(str(t1-t0)+" 2\n")
 
 
     frame = frame1.array
@@ -48,13 +48,21 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #detect faces
     faces = getFaces(frame)
 
+    t2 = time.perf_counter()
+    fichier.write(str(t2-t0)+" 2\n")
+    fichier.write(str(t2-t0)+" 0\n")
+    fichier.write(str(t2-t0)+" 3\n")
+
     if len(faces) == 0 :
 
         print("pas de face")
 
         # Give dir for a human
         dir_people = dp.detect(frame)
-
+        t3 = time.perf_counter()
+        fichier.write(str(t3-t0)+" 3\n")
+        fichier.write(str(t3-t0)+" 0\n")
+        fichier.write(str(t3-t0)+" 4\n")
         if dir_people != "r":
 
             # Send it to arduino
@@ -78,6 +86,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         # detect head pose
         # ang = hpe.estimate_pose(frame)
 
+        t4 = time.perf_counter()
+        fichier.write(str(t4-t0)+" 3\n")
+        fichier.write(str(t4-t0)+" 0\n")
+        fichier.write(str(t4-t0)+" 5\n")
+
         if(ang == 60):
             ang = 30
         else :
@@ -100,9 +113,17 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             print("deplacer le pointeur")
 
-    t2 = time.perf_counter()
-    print(t2-t1)
+    time_end = time.perf_counter()
+    print(time_end-time_start)
     rawCapture.truncate(0)
+    t4 = time.perf_counter()
+    if i != 0 :
+        fichier.write(str(t4-t0)+" 4\n")
+        fichier.write(str(t4-t0)+" 0\n")
+        fichier.write(str(t4-t0)+" 1\n")
+
+
+
 
 # Arduino Esclave
 
