@@ -21,7 +21,7 @@ rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
 
 i = 0
-fichier = open("../resultat.txt", "w") # "a" pour append et "w" pour écraser
+fichier = open("../resultat_etat.txt", "w+") # "a" pour append et "w" pour écraser
 t0 = time.perf_counter()
 
 serialArduino = serial.Serial('/dev/ttyACM0', 9600)
