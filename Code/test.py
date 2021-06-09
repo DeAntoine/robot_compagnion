@@ -26,7 +26,9 @@ t0 = time.perf_counter()
 
 #serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
-
+print("test")
+ls.write(serial.to_bytes('d'))
+print("fok")
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     t1 = time.perf_counter()
