@@ -19,7 +19,7 @@ def angle_to_percent (angle) :
 
 
 def set_gpio(gpio_id) :
-    GPIO.setmode(GPIO.BCM) #Use Board numerotation mode
+    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     GPIO.setwarnings(False) #Disable warnings
     GPIO.setup(gpio_id, GPIO.OUT)
 
