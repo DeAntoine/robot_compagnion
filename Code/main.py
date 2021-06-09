@@ -84,13 +84,13 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             #ls.write("g")
             print("g")
-            serialArduino.write("g")
+            serialArduino.write(to_bytes("g"))
 
         elif ang < 40 :
 
             #ls.write("d")
             print("d")
-            serialArduino.write("d")
+            serialArduino.write(to_bytes("d"))
 
         else :
 
