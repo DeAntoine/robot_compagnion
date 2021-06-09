@@ -52,5 +52,8 @@ def close_gpio(id) :
     pwm.stop()
     GPIO.cleanup()
 
-
+setup_gpio(12)
+time.sleep(1)
 set_servo_angle(12,20)
+time.sleep(1)
+close_gpio(12)
