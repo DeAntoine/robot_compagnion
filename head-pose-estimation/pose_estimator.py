@@ -2,9 +2,21 @@
 import cv2
 import numpy as np
 
-from servo import set_servo_angle
 class PoseEstimator:
     """Estimate head pose according to the facial landmarks"""
+
+    def angle_to_percent (angle) :
+        if angle > 180 or angle < 0 :
+            return False
+
+        start = 4
+        end = 12.5
+        ratio = (end - start)/180 #Calcul ratio from angle to percent
+
+        angle_as_percent = angle * ratio
+
+        return start + angle_as_percent
+
 
     def __init__(self, img_size=(480, 640)):
         self.size = img_size
@@ -111,7 +123,7 @@ class PoseEstimator:
 
         return (rotation_vector, translation_vector)
 
-    def draw_annotation_box(self, image, rotation_vector, translation_vector, color=(255, 255, 255), line_width=2):
+    def draw_annotation_box(pwm_12,pwm_32,self, image, rotation_vector, translation_vector, color=(255, 255, 255), line_width=2):
         """Draw a 3D box as annotation of pose"""
         point_3d = []
         rear_size = 75
@@ -144,8 +156,12 @@ class PoseEstimator:
 
 
 
-        set_servo_angle(12,direction[0])
-        set_servo_angle(32,direction[1])
+        frequence = 50
+        pwm_12.ChangeDutyCycle(angle_to_percent(90+direction[0]))
+        pwm.32.ChangeDutyCycle(angle_to_percent(90+direction[1]))
+
+
+
 
         # Draw all the lines
         cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)

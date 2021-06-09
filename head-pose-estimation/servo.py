@@ -17,42 +17,28 @@ def angle_to_percent (angle) :
 
     return start + angle_as_percent
 
-def setup_gpio(id):
-    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
-    GPIO.setwarnings(False) #Disable warnings
 
-    #Use pin id for PWM signal
-    pwm_gpio = id
-    frequence = 50
-    GPIO.setup(pwm_gpio, GPIO.OUT)
-    pwm = GPIO.PWM(pwm_gpio, frequence)
+GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
+GPIO.setwarnings(False) #Disable warnings
 
-    pwm.start(angle_to_percent(90))
+#Use pin 12 for PWM signal
+pwm_gpio = 12
+frequence = 50
+GPIO.setup(pwm_gpio, GPIO.OUT)
+pwm = GPIO.PWM(pwm_gpio, frequence)
 
-def set_servo_angle(id,angle) :
-    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
-    GPIO.setwarnings(False) #Disable warnings
-
-    #Use pin 12 for PWM signal
-    pwm_gpio = id
-    frequence = 50
-    pwm = GPIO.PWM(pwm_gpio, frequence)
-
-    #Init at 0°
-    pwm.ChangeDutyCycle(angle_to_percent(90+angle))
-
-    #Close GPIO & cleanup
-    #pwm.stop()
-    #GPIO.cleanup()
-
-def close_gpio(id) :
-    frequence = 50
-    pwm = GPIO.PWM(id, frequence)
-    pwm.stop()
-    GPIO.cleanup()
-
-setup_gpio(12)
+#Init at 0°
+pwm.start(angle_to_percent(0))
 time.sleep(1)
-set_servo_angle(12,20)
+
+#Go at 90°
+pwm.ChangeDutyCycle(angle_to_percent(90))
 time.sleep(1)
-close_gpio(12)
+
+#Finish at 180°
+pwm.ChangeDutyCycle(angle_to_percent(180))
+time.sleep(1)
+
+#Close GPIO & cleanup
+pwm.stop()
+GPIO.cleanup()

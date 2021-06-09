@@ -18,8 +18,8 @@ from os_detector import detect_os
 from pose_estimator import PoseEstimator
 from stabilizer import Stabilizer
 
+import RPi.GPIO as GPIO
 import time
-import servo
 
 print("OpenCV version: {}".format(cv2.__version__))
 
@@ -43,6 +43,18 @@ def get_face(detector, img_queue, box_queue):
         image = img_queue.get()
         box = detector.extract_cnn_facebox(image)
         box_queue.put(box)
+
+def angle_to_percent (angle) :
+    if angle > 180 or angle < 0 :
+        return False
+
+    start = 4
+    end = 12.5
+    ratio = (end - start)/180 #Calcul ratio from angle to percent
+
+    angle_as_percent = angle * ratio
+
+    return start + angle_as_percent
 
 
 def main():
@@ -94,8 +106,20 @@ def main():
 
         
     rawCapture = PiRGBArray(camera, size = (320,240))
-    servo.setup_gpio(12)
-    servo.setup_gpio(32)
+
+    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
+    GPIO.setwarnings(False) #Disable warnings
+
+    #Use pin id for PWM signal
+    frequence = 50
+    GPIO.setup(12, GPIO.OUT)
+    pwm_12 = GPIO.PWM(12, frequence)
+    pwm_12.start(angle_to_percent(90))
+
+    GPIO.setup(32, GPIO.OUT)
+    pwm_32 = GPIO.PWM(23, frequence)
+    pwm_32.start(angle_to_percent(90))
+
 
 #while camera.isOpened():
     for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -145,7 +169,7 @@ def main():
             # pose_estimator.draw_annotation_box(frame, pose[0], pose[1], color=(255, 128, 128))
 
             # Uncomment following line to draw stabile pose annotation on frame.
-            pose_estimator.draw_annotation_box(frame, steady_pose[0], steady_pose[1], color=(128, 255, 128))
+            pose_estimator.draw_annotation_box(pwm_12,pwm_32,frame, steady_pose[0], steady_pose[1], color=(128, 255, 128))
 
             # Uncomment following line to draw head axes on frame.
             # pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
@@ -160,8 +184,9 @@ def main():
     # Clean up the multiprocessing process.
     box_process.terminate()
     box_process.join()
-    servo.close_gpio(12)
-    servo.close_gpio(32)
+    pwm_12.stop()
+    pwm_32.stop()
+    GPIO.cleanup()
 
 if __name__ == '__main__':
     main()
