@@ -46,15 +46,20 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     cv2.waitKey(5)
 
-    #detect faces
-    faces = getFaces(frame)
-
-
+    t2 = time.perf_counter()
     if i != 0 :
-        t2 = time.perf_counter()
         fichier.write(str(t2-t0)+" 2\n")
         fichier.write(str(t2-t0)+" 0\n")
         fichier.write(str(t2-t0)+" 3\n")
+
+    #detect faces
+    faces = getFaces(frame)
+
+    t3 = time.perf_counter()
+    if i != 0 :
+        fichier.write(str(t3-t0)+" 3\n")
+        fichier.write(str(t3-t0)+" 0\n")
+        fichier.write(str(t3-t0)+" 4\n")
 
 
     if len(faces) == 0 :
@@ -63,7 +68,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         # Give dir for a human
         dir_people = dp.detect(frame)
-        t3 = time.perf_counter()
+        t4 = time.perf_counter()
 
         if dir_people != "r":
 
@@ -90,9 +95,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         t4 = time.perf_counter()
         if i != 0 :
-            fichier.write(str(t4-t0)+" 3\n")
-            fichier.write(str(t4-t0)+" 0\n")
             fichier.write(str(t4-t0)+" 4\n")
+            fichier.write(str(t4-t0)+" 0\n")
+            fichier.write(str(t4-t0)+" 5\n")
 
         if(ang == 60):
             ang = 30
@@ -123,9 +128,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     i=i+1
     if i != 1 :
         if len(faces) == 0 :
-            fichier.write(str(t4-t0)+" 3\n")
-        else :
             fichier.write(str(t4-t0)+" 4\n")
+        else :
+            fichier.write(str(t4-t0)+" 5\n")
     else :
         t0 = time.perf_counter()
 
