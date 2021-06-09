@@ -123,7 +123,7 @@ class PoseEstimator:
 
         return (rotation_vector, translation_vector)
 
-    def draw_annotation_box(pwm_12,pwm_32,self, image, rotation_vector, translation_vector, color=(255, 255, 255), line_width=2):
+    def draw_annotation_box(self, image, rotation_vector, translation_vector, pwm_12,pwm_32, color=(255, 255, 255), line_width=2):
         """Draw a 3D box as annotation of pose"""
         point_3d = []
         rear_size = 75
