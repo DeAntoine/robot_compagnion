@@ -26,9 +26,7 @@ t0 = time.perf_counter()
 
 serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
-print("test")
-serialArduino.write(b'd')
-print("fok")
+
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     t1 = time.perf_counter()
@@ -84,15 +82,13 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         if ang > 50 :
 
-            ls.write(serial.to_bytes('g'))
+            serialArduino.write(b'd')
             print("g")
-            #serialArduino.write(to_bytes("g"))
 
         elif ang < 40 :
 
-            ls.write(serial.to_bytes('d'))
+            serialArduino.write(b'd')
             print("d")
-            #serialArduino.write(to_bytes("d"))
 
         else :
 
