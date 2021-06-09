@@ -120,6 +120,10 @@ def main():
     pwm_32 = GPIO.PWM(32, frequence)
     pwm_32.start(angle_to_percent(90))
 
+    GPIO.setup(15, GPIO.OUT)
+    GPIO.output(15, GPIO.HIGH)
+
+
 
 #while camera.isOpened():
     for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
