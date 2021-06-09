@@ -117,13 +117,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     print(time_end-time_start)
     rawCapture.truncate(0)
     t4 = time.perf_counter()
+    i=i+1
     if i != 0 :
         fichier.write(str(t4-t0)+" 4\n")
         fichier.write(str(t4-t0)+" 0\n")
         fichier.write(str(t4-t0)+" 1\n")
 
-
-
+    if i == 40 :
+        break
 
 # Arduino Esclave
 
