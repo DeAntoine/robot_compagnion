@@ -33,11 +33,11 @@ compte=1
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     time_start = time.perf_counter()
-    time = time.perf_counter()
+    curr_time = time.perf_counter()
     if i != 0 :
-        fichier.write(str(time-t0)+" "+str(compte)+"1\n")
-        fichier.write(str(time-t0)+" 0\n")
-        fichier.write(str(time-t0)+" "+str(compte+1)+"1\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+        fichier.write(str(curr_time-t0)+" 0\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte+1)+"1\n")
         compte=compte+1
 
     frame = frame1.array
@@ -49,11 +49,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #detect faces
     faces = getFaces(frame)
 
-    time = time.perf_counter()
+    curr_time = time.perf_counter()
     if i != 0 :
-        fichier.write(str(time-t0)+" "+str(compte)+"1\n")
-        fichier.write(str(time-t0)+" 0\n")
-        fichier.write(str(time-t0)+" "+str(compte+1)+"1\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+        fichier.write(str(curr_time-t0)+" 0\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte+1)+"1\n")
         compte=compte+1
 
 
@@ -87,11 +87,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         # detect head pose
         # ang = hpe.estimate_pose(frame)
 
-        time = time.perf_counter()
+        curr_time = time.perf_counter()
         if i != 0 :
-            fichier.write(str(time-t0)+" "+str(compte)+"1\n")
-            fichier.write(str(time-t0)+" 0\n")
-            fichier.write(str(time-t0)+" "+str(compte+1)+"1\n")
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+            fichier.write(str(curr_time-t0)+" 0\n")
+            fichier.write(str(curr_time-t0)+" "+str(compte+1)+"1\n")
             compte=compte+1
 
 
@@ -122,14 +122,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     rawCapture.truncate(0)
     i=i+1
 
-    time = time.perf_counter()
+    curr_time = time.perf_counter()
     if i != 0 :
-        fichier.write(str(time-t0)+" "+str(compte)+"1\n")
-        fichier.write(str(time-t0)+" 0\n")
+        fichier.write(str(curr_time-t0)+" "+str(compte)+"1\n")
+        fichier.write(str(curr_time-t0)+" 0\n")
         if i == 2 :
             break
         compte=1
-        fichier.write(str(t4-t0)+" 1\n")
+        fichier.write(str(curr_time-t0)+" 1\n")
 
 
 
