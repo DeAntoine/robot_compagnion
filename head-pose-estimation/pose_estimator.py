@@ -158,6 +158,8 @@ class PoseEstimator:
 
 
         frequence = 50
+        print(dir_12)
+        print(dir_32)
         pwm_12.ChangeDutyCycle(self.angle_to_percent(dir_12))
         pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_32))
 

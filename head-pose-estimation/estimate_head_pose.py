@@ -122,7 +122,7 @@ def main():
 
     GPIO.setup(15, GPIO.OUT)
     GPIO.output(15, GPIO.HIGH)
-
+    print("pouette")
 
 
 #while camera.isOpened():
