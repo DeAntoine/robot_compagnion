@@ -36,7 +36,6 @@ def set_servo_angle(id,angle) :
     #Use pin 12 for PWM signal
     pwm_gpio = id
     frequence = 50
-    GPIO.setup(pwm_gpio, GPIO.OUT)
     pwm = GPIO.PWM(pwm_gpio, frequence)
 
     #Init at 0°
