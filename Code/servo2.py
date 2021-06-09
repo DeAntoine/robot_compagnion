@@ -29,11 +29,10 @@ def set_servo_angle(id_gpio,angle) :
 
     #Go at 90°
     pwm.ChangeDutyCycle(angle_to_percent(90+angle))
-    time.sleep(1)
 
 
     #Close GPIO & cleanup
     pwm.stop()
     GPIO.cleanup()
 
-set_servo_angle(12,5)
+set_servo_angle(12,-20)
