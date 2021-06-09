@@ -29,6 +29,7 @@ def set_servo_angle(id,angle) :
 
     #Init at 0°
     pwm.start(angle_to_percent(90+angle))
+    time.sleep(1)
 
     #Close GPIO & cleanup
     pwm.stop()
