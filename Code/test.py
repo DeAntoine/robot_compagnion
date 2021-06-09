@@ -118,12 +118,15 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     rawCapture.truncate(0)
     t4 = time.perf_counter()
     i=i+1
-    if i == 2 :
-        break
-    if len(faces) == 0 :
-        fichier.write(str(t4-t0)+" 3\n")
+    if i != 1 :
+        if i == 2 :
+            break
+        if len(faces) == 0 :
+            fichier.write(str(t4-t0)+" 3\n")
+        else :
+            fichier.write(str(t4-t0)+" 4\n")
     else :
-        fichier.write(str(t4-t0)+" 4\n")
+        t0 = time.perf_counter()
 
     fichier.write(str(t4-t0)+" 0\n")
     fichier.write(str(t4-t0)+" 1\n")
