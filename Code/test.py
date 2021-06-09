@@ -49,6 +49,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #detect faces
     faces = getFaces(frame)
 
+    time = time.perf_counter()
     if i != 0 :
         fichier.write(str(time-t0)+" "+str(compte)+"1\n")
         fichier.write(str(time-t0)+" 0\n")
@@ -86,6 +87,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         # detect head pose
         # ang = hpe.estimate_pose(frame)
 
+        time = time.perf_counter()
         if i != 0 :
             fichier.write(str(time-t0)+" "+str(compte)+"1\n")
             fichier.write(str(time-t0)+" 0\n")
@@ -120,9 +122,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     rawCapture.truncate(0)
     i=i+1
 
-
+    time = time.perf_counter()
     if i != 0 :
-        time = time.perf_counter()
         fichier.write(str(time-t0)+" "+str(compte)+"1\n")
         fichier.write(str(time-t0)+" 0\n")
         if i == 2 :
