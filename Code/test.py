@@ -86,11 +86,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if ang > 50 :
 
             serialArduino.write(b'd')
+            serialArduino.write(b'e')
+
             print("g")
 
         elif ang < 40 :
 
             serialArduino.write(b'd')
+            serialArduino.write(b'e')
             print("d")
 
         else :
