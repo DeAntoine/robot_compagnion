@@ -152,8 +152,9 @@ class PoseEstimator:
                                           self.dist_coeefs)
         point_2d = np.int32(point_2d.reshape(-1, 2))
         direction = (point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4
-        dir_12 = 90 + direction[0]
-        dir_32 = 90 + direction[1]
+        facteur = 2
+        dir_12 = 90 + direction[0] * facteur
+        dir_32 = 90 + direction[1] * facteur
 
 
 
