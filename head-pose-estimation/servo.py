@@ -34,3 +34,4 @@ def set_servo_angle(id,angle) :
     pwm.stop()
     GPIO.cleanup()
 
+set_servo_angle(12,20)
