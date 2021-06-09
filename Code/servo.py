@@ -36,6 +36,6 @@ def stop_gpio(gpio_id) :
     pwm.stop()
     GPIO.cleanup()
 
-set_gpio(17)
-set_servo_angle(17,90)
-stop_gpio(17)
+set_gpio(13)
+set_servo_angle(13,90)
+stop_gpio(13)
