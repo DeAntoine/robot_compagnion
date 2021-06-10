@@ -277,8 +277,7 @@ def estimate_direction(frame):
    
     # Show preview.
     cv2.imshow("Preview", frame)
-    if cv2.waitKey(10) == 27:
-        break      
+    cv2.waitKey(1)     
         
     pwm_12.stop()
     pwm_32.stop()
