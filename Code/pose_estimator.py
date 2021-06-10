@@ -167,6 +167,15 @@ class PoseEstimator:
         pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_32))
 
 
+        # Draw all the lines
+        cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)
+
+        cv2.line(image, tuple(point_2d[1]), tuple(point_2d[6]), color, line_width, cv2.LINE_AA)
+        cv2.line(image, tuple(point_2d[2]), tuple(
+            point_2d[7]), color, line_width, cv2.LINE_AA)
+        cv2.line(image, tuple(point_2d[3]), tuple(
+            point_2d[8]), color, line_width, cv2.LINE_AA)
+
     def draw_axis(self, img, R, t):
         points = np.float32(
             [[30, 0, 0], [0, 30, 0], [0, 0, 30], [0, 0, 0]]).reshape(-1, 3)
