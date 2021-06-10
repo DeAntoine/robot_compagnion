@@ -1,6 +1,7 @@
 """Estimate head pose according to the facial landmarks"""
 import cv2
 import numpy as np
+import time
 
 class PoseEstimator:
     """Estimate head pose according to the facial landmarks"""
