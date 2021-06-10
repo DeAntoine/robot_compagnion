@@ -146,11 +146,7 @@ class PoseEstimator:
 
 
         # Map to 2d image points
-        (point_2d, _) = cv2.projectPoints(point_3d,
-                                          rotation_vector,
-                                          translation_vector,
-                                          self.camera_matrix,
-                                          self.dist_coeefs)
+        #(point_2d, _) = cv2.projectPoints(point_3d,rotation_vector,translation_vector,self.camera_matrix,self.dist_coeefs)
         point_2d = np.int32(point_2d.reshape(-1, 2))
         direction = (point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4
 
