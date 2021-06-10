@@ -23,7 +23,6 @@ Initialisation du programme
 '''
 
 
-GPIO.cleanup()
 GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     #GPIO.setwarnings(False) #Disable warnings
 
