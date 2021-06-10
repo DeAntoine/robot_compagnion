@@ -210,7 +210,7 @@ def estimate_direction(frame, pwm_12, pwm_32):
         cov_process=0.1,
         cov_measure=0.1) for _ in range(6)]
 
-    facebox = mark_detector.extract_cnn_facebox(image)
+    facebox = mark_detector.extract_cnn_facebox(frame)
       
     if facebox is not None:
       
