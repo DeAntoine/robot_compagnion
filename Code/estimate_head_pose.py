@@ -200,7 +200,7 @@ def main():
   
 mark_detector = MarkDetector()
   
-def estimate_direction(frame):
+def estimate_direction(frame, facebox):
          
     height, width = frame.shape[:2]
     pose_estimator = PoseEstimator(img_size=(height, width))
@@ -233,10 +233,6 @@ def estimate_direction(frame):
 
     pwm_12.ChangeDutyCycle(0)
     pwm_32.ChangeDutyCycle(0)
-    
-    facebox = mark_detector.extract_cnn_facebox(frame)
-     
-    print(facebox)
       
     if facebox is not None:
       
