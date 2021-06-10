@@ -2,7 +2,7 @@
 
 #PARAM généraux
 inputValues='resultat_fps.txt'
-outputFile="graphe_etat.png"
+outputFile="graphe_fps.png"
 grapheTitle="Temps d execution de chaque etat"
 xlabel="Temps (en seconde)"
 ylabel="Etat du code"
