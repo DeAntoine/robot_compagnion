@@ -202,6 +202,7 @@ mark_detector = MarkDetector()
   
 def estimate_direction(frame, facebox):
          
+    print("estimate direction")
     height, width = frame.shape[:2]
     pose_estimator = PoseEstimator(img_size=(height, width))
 
@@ -211,8 +212,6 @@ def estimate_direction(frame, facebox):
         measure_num=1,
         cov_process=0.1,
         cov_measure=0.1) for _ in range(6)]
-
-    tm = cv2.TickMeter()
 
     GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     #GPIO.setwarnings(False) #Disable warnings
@@ -237,16 +236,16 @@ def estimate_direction(frame, facebox):
     if facebox is not None:
       
         print("face detected")
+        print("face detected")
+        print("face detected")
         # Detect landmarks from image of 128x128.
         face_img = frame[facebox[1]: facebox[3],
                          facebox[0]: facebox[2]]
         face_img = cv2.resize(face_img, (CNN_INPUT_SIZE, CNN_INPUT_SIZE))
         face_img = cv2.cvtColor(face_img, cv2.COLOR_BGR2RGB)
-
-        tm.start()
+        
         marks = mark_detector.detect_marks(face_img)
-        tm.stop()
-
+       
         # Convert the marks locations from local CNN to global image.
         marks *= (facebox[2] - facebox[0])
         marks[:, 0] += facebox[0]
