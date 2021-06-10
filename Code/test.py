@@ -136,7 +136,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     
         print(xMil, yMil)
     
-        image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
+        #image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
         #cv2.imshow('img', frame)
         #cv2.waitKey(1)
         
