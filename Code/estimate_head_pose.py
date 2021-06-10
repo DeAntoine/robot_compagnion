@@ -140,6 +140,9 @@ def main():
         facebox = box_queue.get()
 
         if facebox is not None:
+          
+            print("face detectedddd")
+          
             # Detect landmarks from image of 128x128.
             face_img = frame[facebox[1]: facebox[3],
                              facebox[0]: facebox[2]]
@@ -182,9 +185,9 @@ def main():
             # pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
 
         # Show preview.
-        cv2.imshow("Preview", frame)
-        if cv2.waitKey(10) == 27:
-            break
+        #cv2.imshow("Preview", frame)
+        #if cv2.waitKey(10) == 27:
+            #break
             
         rawCapture.truncate(0)
 
@@ -234,6 +237,8 @@ def estimate_direction(frame):
     facebox = mark_detector.extract_cnn_facebox(frame)
 
     if facebox is not None:
+      
+        print("face detected")
         # Detect landmarks from image of 128x128.
         face_img = frame[facebox[1]: facebox[3],
                          facebox[0]: facebox[2]]
