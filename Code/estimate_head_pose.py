@@ -231,10 +231,10 @@ def estimate_direction(frame, pwm_12, pwm_32):
         marks[:, 1] += facebox[1]
 
         # Uncomment following line to show raw marks.
-        mark_detector.draw_marks(frame, marks, color=(0, 255, 0))
+        #mark_detector.draw_marks(frame, marks, color=(0, 255, 0))
 
         # Uncomment following line to show facebox.
-        #mark_detector.draw_box(frame, [facebox])
+        mark_detector.draw_box(frame, [facebox])
 
         # Try pose estimation with 68 points.
         pose = pose_estimator.solve_pose_by_68_points(marks)
@@ -254,7 +254,7 @@ def estimate_direction(frame, pwm_12, pwm_32):
         pose_estimator.draw_annotation_box(frame, steady_pose[0], steady_pose[1], pwm_12,pwm_32, color=(128, 255, 128))
 
         # Uncomment following line to draw head axes on frame.
-        # pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
+        pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
    
     # Show preview.
     cv2.imshow("Preview", frame)
