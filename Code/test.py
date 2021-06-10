@@ -22,6 +22,8 @@ import serial
 Initialisation du programme
 '''
 
+
+GPIO.cleanup()
 GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
     #GPIO.setwarnings(False) #Disable warnings
 
@@ -38,9 +40,6 @@ pwm_32.start(0)
 GPIO.setup(15, GPIO.OUT)
 GPIO.output(15, GPIO.HIGH)
 print("pouette")
-
-pwm_12.ChangeDutyCycle(0)
-pwm_32.ChangeDutyCycle(0)
 
 
 camera = PiCamera()
@@ -172,6 +171,12 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         compte=1
         t0 = time.perf_counter()
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+
+
+
+pwm_12.stop()
+pwm_32.stop()
+GPIO.cleanup()
 
 # Arduino Esclave
 
