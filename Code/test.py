@@ -154,7 +154,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
                 print("c'est bon")
-                estimate_direction(frame, faces[0], pwm_12, pwm_32)
+                estimate_direction(frame, pwm_12, pwm_32)
                 
                 
     time_end = time.perf_counter()
