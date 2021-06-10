@@ -128,9 +128,6 @@ def main():
 #while camera.isOpened():
     for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
-        pwm_12.ChangeDutyCycle(0)
-        pwm_32.ChangeDutyCycle(0)
-
         frame = frame1.array
        
         # Feed frame to image queue.
