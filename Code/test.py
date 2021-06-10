@@ -22,6 +22,27 @@ import serial
 Initialisation du programme
 '''
 
+GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
+    #GPIO.setwarnings(False) #Disable warnings
+
+#Use pin id for PWM signal
+frequence = 50
+GPIO.setup(12, GPIO.OUT)
+pwm_12 = GPIO.PWM(12, frequence)
+pwm_12.start(0)
+
+GPIO.setup(32, GPIO.OUT)
+pwm_32 = GPIO.PWM(32, frequence)
+pwm_32.start(0)
+
+GPIO.setup(15, GPIO.OUT)
+GPIO.output(15, GPIO.HIGH)
+print("pouette")
+
+pwm_12.ChangeDutyCycle(0)
+pwm_32.ChangeDutyCycle(0)
+
+
 camera = PiCamera()
 camera.resolution = (320, 240)
 camera.framerate= 10
@@ -133,7 +154,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
                 print("c'est bon")
-                estimate_direction(frame, faces[0])
+                estimate_direction(frame, faces[0], pwm12, pwm32)
                 
                 
     time_end = time.perf_counter()
