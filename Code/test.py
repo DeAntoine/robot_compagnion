@@ -140,7 +140,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         #cv2.imshow('img', frame)
         #cv2.waitKey(1)
         
-        height, width = image.shape[:2]
+        height, width = frame.shape[:2]
         '''
         if xMil < (width/2)-30 :
             print("a gauche !!!")
