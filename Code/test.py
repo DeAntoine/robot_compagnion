@@ -104,7 +104,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         cv2.imshow('img', frame)
         cv2.waitKey(0)
         
-            print("deplacer le pointeur")
+        print("deplacer le pointeur")
 
     time_end = time.perf_counter()
     print(time_end-time_start)
