@@ -109,10 +109,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         
         height, width = image.shape[:2]
         
-        if yMil < width :
+        if xMil < (width/2)-10 :
             print("a droite !!!")
             
-        else:
+        else if xMil < (width/2)+10:
             print("a gauche !!!")
 
     time_end = time.perf_counter()
