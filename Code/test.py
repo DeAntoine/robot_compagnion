@@ -96,26 +96,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
 
-        if(ang == 60):
-            ang = 30
-        else :
-            ang = 60
+        # Trouver le centre du carré
+        xMil = (faces[0][0] + faces[0][2])/2
+        yMil = (faces[0][1] + faces[0][3])/2
 
-        if ang > 50 :
-
-            serialArduino.write(b'd')
-            serialArduino.write(b'e')
-
-            print("g")
-
-        elif ang < 40 :
-
-            serialArduino.write(b'd')
-            serialArduino.write(b'e')
-            print("d")
-
-        else :
-
+        image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
+        cv2.imshow('img', frame)
+        cv2.waitKey(0)
+        
             print("deplacer le pointeur")
 
     time_end = time.perf_counter()
