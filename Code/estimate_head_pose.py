@@ -231,7 +231,7 @@ def estimate_direction(frame):
     pwm_12.ChangeDutyCycle(0)
     pwm_32.ChangeDutyCycle(0)
     
-    facebox = mark_detector.extract_cnn_facebox(image)
+    facebox = mark_detector.extract_cnn_facebox(frame)
 
     if facebox is not None:
         # Detect landmarks from image of 128x128.
