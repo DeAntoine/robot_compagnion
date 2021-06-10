@@ -195,7 +195,7 @@ def main():
     pwm_32.stop()
     GPIO.cleanup()
     
- def estimate_direction(camera):
+def estimate_direction(camera):
         
     # Introduce mark_detector to detect landmarks.
     mark_detector = MarkDetector()
