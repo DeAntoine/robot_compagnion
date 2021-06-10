@@ -248,7 +248,7 @@ def estimate_direction(frame, pwm_12, pwm_32):
         steady_pose = np.reshape(steady_pose, (-1, 3))
         #print(steady_pose)
         # Uncomment following line to draw pose annotation on frame.
-        pose_estimator.draw_annotation_box(frame, pose[0], pose[1], color=(255, 128, 128))
+        pose_estimator.draw_annotation_box(frame, pose[0], pose[1], pwm_12,pwm_32,color=(255, 128, 128))
 
         # Uncomment following line to draw stabile pose annotation on frame.
         #pose_estimator.draw_annotation_box(frame, steady_pose[0], steady_pose[1], pwm_12,pwm_32, color=(128, 255, 128))
