@@ -109,7 +109,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         
         height, width = image.shape[:2]
         
-        if xMil < width :
+        if yMil < width :
             print("a droite !!!")
             
         else:
