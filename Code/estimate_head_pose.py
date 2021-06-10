@@ -182,10 +182,10 @@ def main():
             # pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
 
         # Show preview.
-        #cv2.imshow("Preview", frame)
-        #if cv2.waitKey(10) == 27:
-            #break
-            
+        cv2.imshow("Preview", frame)
+        if cv2.waitKey(10) == 27:
+            break
+
         rawCapture.truncate(0)
 
     # Clean up the multiprocessing process.
