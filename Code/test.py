@@ -100,10 +100,12 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         # Trouver le centre du carré
         xMil = int(faces[0][0] + faces[0][2])/2
         yMil = int(faces[0][1] + faces[0][3])/2
-
-        image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
-        cv2.imshow('img', frame)
-        cv2.waitKey(0)
+    
+        print(xMil, yMil)
+    
+        #image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
+        #cv2.imshow('img', frame)
+        #cv2.waitKey(0)
         
         print("deplacer le pointeur")
 
