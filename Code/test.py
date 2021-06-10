@@ -107,7 +107,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         cv2.imshow('img', frame)
         cv2.waitKey(1)
         
-        height, width = img.shape[:2]
+        height, width = image.shape[:2]
         
         if xMil < width :
             print("a droite !!!")
