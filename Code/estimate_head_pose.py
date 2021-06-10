@@ -259,8 +259,5 @@ def estimate_direction(frame, facebox, pwm_12, pwm_32):
     # Show preview.
     #cv2.imshow("Preview", frame)
     #cv2.waitKey(1)     
-        
-    pwm_12.stop()
-    pwm_32.stop()
-    GPIO.cleanup()
+
 
