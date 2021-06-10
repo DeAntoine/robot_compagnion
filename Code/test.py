@@ -161,12 +161,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
                 
     time_end = time.perf_counter()
     print(time_end-time_start)
-    fichier_fps.write(str(t0)+" "+str(time_end-time_start)+"\n")
     rawCapture.truncate(0)
     i=i+1
 
 
     curr_time = time.perf_counter()
+    if i == 1 :
+        t = time.perf_counter()
+
     if i != 0 :
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
@@ -175,6 +177,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         compte=1
         t0 = time.perf_counter()
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+        fichier_fps.write(str(t0-t)+" "+str(time_end-time_start)+"\n")
 
 
 
