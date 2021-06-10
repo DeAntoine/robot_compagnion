@@ -41,7 +41,7 @@ if [ $# > 1 ]; then
     outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
     echo_debug "Graphe généré dans $outputGraphe" $2
     echo "Graphe généré dans $outputGraphe"
-    #gpicview $outputGraphe &
+    gpicview $outputGraphe &
   elif [ "$1" = "start" ]; then
     cd Code
     echo_debug "python3 Code/main.py" $2

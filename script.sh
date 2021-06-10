@@ -1,14 +1,12 @@
 #!/bin/bash
 
 #PARAM généraux
-inputValues='resultat_fps.txt'
-outputFile="graphe_fps.png"
-#grapheTitle="Temps d execution de chaque etat"
-#xlabel="Temps (en seconde)"
-#ylabel="Etat du code"
-grapheTitle="Nombre de fps sur 50 secondes"
-xlabel="Temps (en ms)"
-ylabel="Fps"
+inputValues='resultat.txt'
+outputFile="graphe_etat.png"
+grapheTitle="Temps d execution de chaque etat"
+xlabel="Temps (en seconde)"
+ylabel="Etat du code"
+
 
 
 aMin=($(sort -g -k 1 $inputValues | sed -n '1p;$p' | cut -d' ' -f1))
