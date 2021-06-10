@@ -235,7 +235,9 @@ def estimate_direction(frame):
     pwm_32.ChangeDutyCycle(0)
     
     facebox = mark_detector.extract_cnn_facebox(frame)
-
+     
+    print(facebox)
+      
     if facebox is not None:
       
         print("face detected")
@@ -281,8 +283,8 @@ def estimate_direction(frame):
         # pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
    
     # Show preview.
-    cv2.imshow("Preview", frame)
-    cv2.waitKey(1)     
+    #cv2.imshow("Preview", frame)
+    #cv2.waitKey(1)     
         
     pwm_12.stop()
     pwm_32.stop()
