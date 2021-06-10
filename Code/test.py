@@ -118,7 +118,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         cv2.waitKey(1)
         
         height, width = image.shape[:2]
-        
+        '''
         if xMil < (width/2)-30 :
             print("a gauche !!!")
             
@@ -129,9 +129,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             print("trop bas !!")
         elif yMil <  50 :
             print("trop haut !!")
-            
+         '''   
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
+                print("c'est bon")
                 estimate_direction(frame, faces[0])
                 
                 
