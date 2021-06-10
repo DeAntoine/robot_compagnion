@@ -161,7 +161,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
                 
     time_end = time.perf_counter()
     print(time_end-time_start)
-    fichier_fps.write(t0+" "+str(time_end-time_start))
+    fichier_fps.write(str(t0)+" "+str(time_end-time_start))
     rawCapture.truncate(0)
     i=i+1
 
