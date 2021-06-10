@@ -115,10 +115,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         elif xMil > (width/2)+30:
             print("a droite !!!")
             
-        if yMil > height-20 :
-            print("trop haut !!")
-        elif yMil < 20 :
+        if yMil > height-50 :
             print("trop bas !!")
+        elif yMil < 50 :
+            print("trop haut !!")
 
     time_end = time.perf_counter()
     print(time_end-time_start)
