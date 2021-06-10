@@ -197,7 +197,7 @@ def main():
   
 mark_detector = MarkDetector()
   
-def estimate_direction(frame, facebox, pwm_12, pwm_32):
+def estimate_direction(frame, pwm_12, pwm_32):
          
     print("estimate direction")
     height, width = frame.shape[:2]
@@ -210,7 +210,7 @@ def estimate_direction(frame, facebox, pwm_12, pwm_32):
         cov_process=0.1,
         cov_measure=0.1) for _ in range(6)]
 
-    
+    facebox = mark_detector.extract_cnn_facebox(image)
       
     if facebox is not None:
       
