@@ -117,7 +117,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     if i != 0 :
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
-        if i == 2 :
+        if i == 100 :
             break
         compte=1
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
