@@ -4,6 +4,7 @@ import liaison_serie as ls
 from face_detector_yolo import getFaces
 from picamera import PiCamera
 from picamera.array import PiRGBArray
+from estimate_head_pose import estimate_direction
 import cv2
 import time
 import serial
@@ -119,6 +120,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             print("trop bas !!")
         elif yMil <  50 :
             print("trop haut !!")
+            
+        if (width/2)-30 < xMil < (width/2)+30 :
+            if  50 < yMil < height-80 :
+                estimate_direction(camera)
 
     time_end = time.perf_counter()
     print(time_end-time_start)
