@@ -95,7 +95,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             compte=compte+1
             fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
-
+        print(faces[0][0], faces[0][2], faces[0][1], faces[0][3])
+        
         # Trouver le centre du carré
         xMil = (faces[0][0] + faces[0][2])/2
         yMil = (faces[0][1] + faces[0][3])/2
