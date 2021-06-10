@@ -51,6 +51,8 @@ rawCapture = PiRGBArray(camera, size = (320,240))
 
 i = 0
 fichier = open("../resultat_etat.txt", "w+") # "a" pour append et "w" pour écraser
+fichier_fps = open("../resultat_fps.txt", "w+") # "a" pour append et "w" pour écraser
+
 t0 = time.perf_counter()
 
 serialArduino = serial.Serial('/dev/ttyACM0', 9600)
@@ -73,9 +75,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     frame = frame1.array
 
-    cv2.imshow('img', frame)
+    #cv2.imshow('img', frame)
 
-    cv2.waitKey(1)
+    #cv2.waitKey(1)
 
     #detect faces
     faces = getFaces(frame)
@@ -159,6 +161,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
                 
     time_end = time.perf_counter()
     print(time_end-time_start)
+    fichier_fps.write(t0+" "+str(time_end-time_start))
     rawCapture.truncate(0)
     i=i+1
 
