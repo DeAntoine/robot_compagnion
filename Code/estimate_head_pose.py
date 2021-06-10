@@ -197,7 +197,7 @@ def main():
   
 mark_detector = MarkDetector()
   
-def estimate_direction(frame, facebox, pwm12, pwm32):
+def estimate_direction(frame, facebox, pwm_12, pwm_32):
          
     print("estimate direction")
     height, width = frame.shape[:2]
