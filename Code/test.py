@@ -112,7 +112,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if xMil < (width/2)-10 :
             print("a droite !!!")
             
-        else if xMil < (width/2)+10:
+        elif xMil < (width/2)+10:
             print("a gauche !!!")
 
     time_end = time.perf_counter()
