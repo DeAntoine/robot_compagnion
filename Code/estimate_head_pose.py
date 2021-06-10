@@ -197,7 +197,7 @@ def main():
   
 mark_detector = MarkDetector()
   
-def estimate_direction(frame, facebox):
+def estimate_direction(frame, facebox, pwm12, pwm32):
          
     print("estimate direction")
     height, width = frame.shape[:2]
@@ -210,25 +210,7 @@ def estimate_direction(frame, facebox):
         cov_process=0.1,
         cov_measure=0.1) for _ in range(6)]
 
-    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
-    #GPIO.setwarnings(False) #Disable warnings
-
-    #Use pin id for PWM signal
-    frequence = 50
-    GPIO.setup(12, GPIO.OUT)
-    pwm_12 = GPIO.PWM(12, frequence)
-    pwm_12.start(0)
-
-    GPIO.setup(32, GPIO.OUT)
-    pwm_32 = GPIO.PWM(32, frequence)
-    pwm_32.start(0)
-
-    GPIO.setup(15, GPIO.OUT)
-    GPIO.output(15, GPIO.HIGH)
-    print("pouette")
-
-    pwm_12.ChangeDutyCycle(0)
-    pwm_32.ChangeDutyCycle(0)
+    
       
     if facebox is not None:
       
