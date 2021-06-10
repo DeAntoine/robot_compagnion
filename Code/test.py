@@ -149,6 +149,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if i == 100 :
             break
         compte=1
+        t0 = time.perf_counter()
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
 # Arduino Esclave
