@@ -166,8 +166,7 @@ class PoseEstimator:
         pwm_12.ChangeDutyCycle(self.angle_to_percent(dir_12))
         pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_32))
 
-        time.sleep(0.1)     
-        
+
     def draw_axis(self, img, R, t):
         points = np.float32(
             [[30, 0, 0], [0, 30, 0], [0, 0, 30], [0, 0, 0]]).reshape(-1, 3)
