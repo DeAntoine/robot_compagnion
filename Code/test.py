@@ -142,7 +142,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         #cv2.waitKey(1)
         
         height, width = frame.shape[:2]
-        
+        print("taille du carré")
+        print(int((faces[0][2]-faces[0][0])))
+        print(int((faces[0][3]-faces[0][1])))
+
+        print(width)
         if xMil < (width/2)-30 :
             ls.write('g')
             

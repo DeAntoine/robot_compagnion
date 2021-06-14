@@ -103,9 +103,6 @@ def main():
         measure_num=1,
         cov_process=0.1,
         cov_measure=0.1) for _ in range(6)]
-    print("taille du carré")
-    print(height)
-    print(width)
     tm = cv2.TickMeter()
 
         
