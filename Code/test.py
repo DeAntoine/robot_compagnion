@@ -146,10 +146,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         longueur_tete = int((faces[0][3]-faces[0][1]))
 
         print(width)
-        if longueur_tete+longueur_tete < 80 :
+        if longueur_tete+longueur_tete < 90 :
             ls.write('a')
             
-        elif longueur_tete+longueur_tete > 120 :
+        elif longueur_tete+longueur_tete > 110 :
             ls.write('r')
         
         elif xMil < (width/2)-30 :

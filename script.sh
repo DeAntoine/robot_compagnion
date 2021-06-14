@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #PARAM généraux
-inputValues='resultat2.txt'
+inputValues='resultat.txt'
 outputFile="graphe_etat2.png"
 grapheTitle="Temps d execution de chaque etat"
 xlabel="Temps (en seconde)"
