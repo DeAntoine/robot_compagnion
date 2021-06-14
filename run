@@ -23,7 +23,6 @@ echo_help(){
     echo_cmd "run start"
     echo_cmd '[CMD] -d #debug'
     echo_cmd '[CMD] -g #show graph'
-
 }
 
 cd ~/Documents/robot_compagnon/
