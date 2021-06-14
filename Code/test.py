@@ -81,14 +81,15 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     #detect faces
     faces = getFaces(frame)
-
+    
+    """
     curr_time = time.perf_counter()
     if i != 0 :
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
         compte=compte+1
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-
+    """
 
 
     if len(faces) == 0 :
@@ -103,12 +104,13 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             # Send it to arduino
             print("une personne a ete detecte et pas son visage")
             print(dir_people)
-            #ls.write(to_bytes(dir_people))
+            ls.write(to_bytes(dir_people))
 
         else :
 
             # deplacement aleatoire
             print("deplacement aleatoire")
+            ls.write(to_bytes('r'))
 
 
     else :
@@ -141,21 +143,22 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         #cv2.waitKey(1)
         
         height, width = frame.shape[:2]
-        '''
+        
         if xMil < (width/2)-30 :
-            print("a gauche !!!")
+            ls.write(to_bytes('d'))
             
         elif xMil > (width/2)+30:
-            print("a droite !!!")
+            ls.write(to_bytes('g'))
             
         if yMil > height-80 :
-            print("trop bas !!")
+            ls.write(to_bytes('a'))
+            
         elif yMil <  50 :
-            print("trop haut !!")
-         '''   
+            ls.write(to_bytes('r'))
+         
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
-                print("c'est bon")
+                ls.write(to_bytes('s'))
                 estimate_direction(frame, pwm_12, pwm_32)
                 
                 
