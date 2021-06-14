@@ -58,7 +58,6 @@ t0 = time.perf_counter()
 #serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
 
-ls.write('z')
 compte=1
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -110,7 +109,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             # deplacement aleatoire
             print("deplacement aleatoire")
-            ls.write(to_bytes('z'))
+            ls.write('z')
 
 
     else :
@@ -145,20 +144,20 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         height, width = frame.shape[:2]
         
         if xMil < (width/2)-30 :
-            ls.write(to_bytes("d"))
+            ls.write('d')
             
         elif xMil > (width/2)+30:
-            ls.write(to_bytes('g'))
+            ls.write('g')
             
         if yMil > height-80 :
-            ls.write(to_bytes('a'))
+            ls.write('a')
             
         elif yMil <  50 :
-            ls.write(to_bytes('r'))
+            ls.write('r')
          
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
-                ls.write(to_bytes('s'))
+                ls.write('s')
                 estimate_direction(frame, pwm_12, pwm_32)
                 
                 
