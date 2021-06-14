@@ -58,7 +58,7 @@ t0 = time.perf_counter()
 serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
 
-serialArduino.write(b'g')
+#serialArduino.write(b'g')
 compte=1
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -110,7 +110,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             # deplacement aleatoire
             print("deplacement aleatoire")
-            ls.write(to_bytes('r'))
+            ls.write(to_bytes('z'))
 
 
     else :
