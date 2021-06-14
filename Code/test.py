@@ -143,8 +143,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         
         height, width = frame.shape[:2]
         print("taille du carré")
-        print(int((faces[0][2]-faces[0][0])))
-        print(int((faces[0][3]-faces[0][1])))
+        largeur_tete = int((faces[0][2]-faces[0][0]))
+        longueur_tete = int((faces[0][3]-faces[0][1]))
 
         print(width)
         if xMil < (width/2)-30 :
@@ -153,10 +153,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         elif xMil > (width/2)+30:
             ls.write('d')
             
-        if yMil > height-80 :
+        if longueur_tete+longueur_tete < 80 :
             ls.write('a')
             
-        elif yMil <  50 :
+        elif longueur_tete+longueur_tete > 120 :
             ls.write('r')
          
         if (width/2)-30 < xMil < (width/2)+30 :
