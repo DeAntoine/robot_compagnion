@@ -18,10 +18,12 @@ echo_debug(){
 
 echo_help(){
     echo "commande :"
+    echo_cmd "run main"
     echo_cmd "run test"
     echo_cmd "run start"
-    echo_cmd "run main"
-    echo_cmd '[CMD] -d #pour le débug'
+    echo_cmd '[CMD] -d #debug'
+    echo_cmd '[CMD] -g #show graph'
+
 }
 
 cd ~/Documents/robot_compagnon/
@@ -40,17 +42,17 @@ if [ $# > 1 ]; then
     sudo bash script.sh
     outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
     echo_debug "Graphe généré dans $outputGraphe" $2
-    echo "Graphe généré dans $outputGraphe"
-    gpicview $outputGraphe &
-  elif [ "$1" = "start" ]; then
+    if [ "$2" = "-g" ]; then
+      echo "Graphe généré dans $outputGraphe"
+      gpicview $outputGraphe &
+    fi
+  elif [ "$1" = "main" ]; then
     cd Code
     echo_debug "python3 Code/main.py" $2
     python3 main.py
     cd ..
-  elif [ "$1" = "main" ]; then
+  elif [ "$1" = "start" ]; then
     echo "i'm running, make run start for the real main"
-    gpicview ~/Documents/robot_compagnon/graphe2.png &
-
   else
     echo_help
   fi
