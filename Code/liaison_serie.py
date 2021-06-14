@@ -12,4 +12,4 @@ def read():
     return ser.read()
 
 def write(c):
-    ser.write(bytes(c))
+    ser.write(bytes(c.encode()))
