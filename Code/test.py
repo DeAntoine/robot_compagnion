@@ -61,6 +61,8 @@ ang = 30
 #serialArduino.write(b'g')
 compte=1
 
+ls.write(to_bytes("z"))
+
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     pwm_12.ChangeDutyCycle(0)
@@ -78,7 +80,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #cv2.imshow('img', frame)
 
     #cv2.waitKey(1)
-
+    
     #detect faces
     faces = getFaces(frame)
     
