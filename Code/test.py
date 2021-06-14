@@ -55,13 +55,11 @@ fichier_fps = open("../resultat_fps.txt", "w+") # "a" pour append et "w" pour é
 
 t0 = time.perf_counter()
 
-serialArduino = serial.Serial('/dev/ttyACM0', 9600)
+#serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
 
-#serialArduino.write(b'g')
+ls.write('z')
 compte=1
-
-ls.write(bytes(b'z'))
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
@@ -106,7 +104,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             # Send it to arduino
             print("une personne a ete detecte et pas son visage")
             print(dir_people)
-            ls.write(to_bytes(dir_people))
+            ls.write(dir_people)
 
         else :
 
