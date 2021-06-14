@@ -146,23 +146,26 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         longueur_tete = int((faces[0][3]-faces[0][1]))
 
         print(width)
-        if xMil < (width/2)-30 :
-            ls.write('g')
-            
-        elif xMil > (width/2)+30:
-            ls.write('d')
-            
         if longueur_tete+longueur_tete < 80 :
             ls.write('a')
             
         elif longueur_tete+longueur_tete > 120 :
             ls.write('r')
-         
+        
+        elif xMil < (width/2)-30 :
+            ls.write('g')
+            
+        elif xMil > (width/2)+30:
+            ls.write('d')
+        else :
+            ls.write('s')
+            estimate_direction(frame, pwm_12, pwm_32)
+       """ 
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
                 ls.write('s')
                 estimate_direction(frame, pwm_12, pwm_32)
-                
+              """  
                 
     time_end = time.perf_counter()
     print(time_end-time_start)
