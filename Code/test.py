@@ -61,7 +61,7 @@ ang = 30
 #serialArduino.write(b'g')
 compte=1
 
-ls.write(bytes('z'))
+ls.write(bytes(b'z'))
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
