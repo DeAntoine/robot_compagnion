@@ -92,6 +92,8 @@ def main():
 
     # Introduce pose estimator to solve pose. Get one frame to setup the
     # estimator according to the image size.
+
+
     height, width = frame.shape[:2]
     pose_estimator = PoseEstimator(img_size=(height, width))
 
@@ -101,7 +103,9 @@ def main():
         measure_num=1,
         cov_process=0.1,
         cov_measure=0.1) for _ in range(6)]
-
+    print("taille du carré")
+    print(height)
+    print(width)
     tm = cv2.TickMeter()
 
         
