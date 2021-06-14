@@ -145,7 +145,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         height, width = frame.shape[:2]
         
         if xMil < (width/2)-30 :
-            ls.write(to_bytes('d'))
+            ls.write(to_bytes("d"))
             
         elif xMil > (width/2)+30:
             ls.write(to_bytes('g'))
