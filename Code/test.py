@@ -55,10 +55,9 @@ fichier_fps = open("../resultat_fps.txt", "w+") # "a" pour append et "w" pour é
 
 t0 = time.perf_counter()
 
-serialArduino = serial.Serial('/dev/ttyACM0', 9600)
+#serialArduino = serial.Serial('/dev/ttyACM0', 9600)
 ang = 30
 
-serialArduino.write(b'g')
 compte=1
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -78,17 +77,18 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #cv2.imshow('img', frame)
 
     #cv2.waitKey(1)
-
+    
     #detect faces
     faces = getFaces(frame)
-
+    
+    """
     curr_time = time.perf_counter()
     if i != 0 :
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier.write(str(curr_time-t0)+" 0\n")
         compte=compte+1
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-
+    """
 
 
     if len(faces) == 0 :
@@ -103,12 +103,13 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             # Send it to arduino
             print("une personne a ete detecte et pas son visage")
             print(dir_people)
-            #ls.write(to_bytes(dir_people))
+            ls.write(dir_people)
 
         else :
 
             # deplacement aleatoire
             print("deplacement aleatoire")
+            ls.write('z')
 
 
     else :
@@ -141,21 +142,22 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         #cv2.waitKey(1)
         
         height, width = frame.shape[:2]
-        '''
+        
         if xMil < (width/2)-30 :
-            print("a gauche !!!")
+            ls.write('g')
             
         elif xMil > (width/2)+30:
-            print("a droite !!!")
+            ls.write('d')
             
         if yMil > height-80 :
-            print("trop bas !!")
+            ls.write('a')
+            
         elif yMil <  50 :
-            print("trop haut !!")
-         '''   
+            ls.write('r')
+         
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
-                print("c'est bon")
+                ls.write('s')
                 estimate_direction(frame, pwm_12, pwm_32)
                 
                 

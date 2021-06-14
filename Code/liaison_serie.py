@@ -1,6 +1,6 @@
 import serial
 
-ser = serial.Serial(port="/dev/ttyACM0", baudrate=115200,timeout=1) 
+ser = serial.Serial(port="/dev/ttyACM0", baudrate=9600,timeout=1) 
 ser.close() 
 ser.open() 
 
@@ -12,4 +12,4 @@ def read():
     return ser.read()
 
 def write(c):
-    ser.write(c)
+    ser.write(bytes(c.encode()))
