@@ -156,10 +156,12 @@ class PoseEstimator:
         xGrand = int((point_2d[5][0] + point_2d[7][0])/2)
         yGrand = int((point_2d[5][1] + point_2d[7][1])/2)
         
+        
+        
         if xPetit-xGrand > 0: # tete tournee a droite
             dir_12 = 90 - (xPetit-xGrand)
         else: # tete tournee a gauche
-            dir12 = 90 + abs(xPetit-xGrand)
+            dir_12 = 90 + abs(xPetit-xGrand)
             
         """
         if xPetit < xGrand :
