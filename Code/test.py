@@ -146,7 +146,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         longueur_tete = int((faces[0][3]-faces[0][1]))
 
         print("\t\tlargeur tete : ",largeur_tete)
-        print("\t\tlargeur tete : ",longueur_tete)
+        print("\t\tlongueur tete : ",longueur_tete)
         
         if longueur_tete+longueur_tete < 90 :
             ls.write('a')
