@@ -60,13 +60,13 @@ if [ $# > 1 ]; then
     cd Code
     echo_debug "python3 Code/test.py" $debug
 
-    if [ "$debug" = "true"]; then
+    if [ "$debug" = "true" ]; then
       python3 test.py $argument_string
     else
       python3 test.py $argument_string 2> run.log
     fi
     cd ..
-    if [ "$graphe" = "true"]; then
+    if [ "$graphe" = "true" ]; then
       echo_debug "bash script.sh" $debug
       sudo bash script.sh
       outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
