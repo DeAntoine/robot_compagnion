@@ -21,9 +21,9 @@ echo_help(){
     echo_cmd "run main"
     echo_cmd "run test"
     echo_cmd "run start"
-    echo_cmd '[CMD] -d #debug'
-    echo_cmd '[CMD] -g #show graph'
-    echo_cmd '[CMD] -v #verbose graph'
+    echo_cmd 'CMD [-d] debug'
+    echo_cmd 'CMD [-g] show graph'
+    echo_cmd 'CMD [-v] verbose'
 
 }
 

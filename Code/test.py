@@ -23,6 +23,12 @@ import sys
 '''
 Initialisation du programme
 '''
+LASER=15
+LED_VERTE=11
+LED_BLEU=13
+
+
+
 is_verbose=False
 is_graphe=False
 if len(sys.argv) > 1 :
@@ -45,8 +51,16 @@ GPIO.setup(32, GPIO.OUT)
 pwm_32 = GPIO.PWM(32, frequence)
 pwm_32.start(0)
 
-GPIO.setup(15, GPIO.OUT)
-GPIO.output(15, GPIO.HIGH)
+GPIO.setup(LASER, GPIO.OUT)
+GPIO.output(LASER, GPIO.HIGH)
+
+GPIO.setup(LED_VERTE, GPIO.OUT)
+GPIO.output(LED_VERTE, GPIO.LOW)
+
+GPIO.setup(LED_BLEU, GPIO.OUT)
+GPIO.output(LED_BLEU, GPIO.LOW)
+
+
 print("pouette")
 """
 while True :
@@ -80,6 +94,7 @@ count = 0
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
+    GPIO.output(LED_BLEU, GPIO.HIGH)
     pwm_12.ChangeDutyCycle(0)
     pwm_32.ChangeDutyCycle(0)
     if is_graphe :
@@ -161,6 +176,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         height, width = frame.shape[:2]
         largeur_tete = int((faces[0][2]-faces[0][0]))
         longueur_tete = int((faces[0][3]-faces[0][1]))
+        GPIO.output(LED_VERTE, GPIO.LOW)
+
         if is_verbose :
             print("\t\tlargeur tete : ",largeur_tete)
             print("\t\tlongueur tete : ",longueur_tete)
@@ -180,6 +197,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             found = True
             count = 0
             ls.write('s')
+            GPIO.output(LED_VERTE, GPIO.HIGH)
             estimate_direction(frame, pwm_12, pwm_32)
 
     rawCapture.truncate(0)
