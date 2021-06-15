@@ -170,7 +170,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if longueur_tete < 40 :
             ls.write('a')
             
-        elif longueur_tete > 60 :
+        elif longueur_tete > 90 :
             ls.write('r')
         
         elif xMil < (width/2)-30 :
