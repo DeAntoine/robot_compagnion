@@ -4,7 +4,7 @@ import liaison_serie as ls
 from face_detector_yolo import getFaces
 from picamera import PiCamera
 from picamera.array import PiRGBArray
-from estimate_head_pose import estimate_direction, estimate_direction_face
+from estimate_head_pose import estimate_direction
 from argparse import ArgumentParser
 from multiprocessing import Process, Queue
 from mark_detector import MarkDetector
@@ -169,7 +169,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             ls.write('d')
         else :
             ls.write('s')
-            estimate_direction_face(frame, faces[0], pwm_12, pwm_32)
+            estimate_direction(frame, pwm_12, pwm_32)
         """ 
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
