@@ -68,6 +68,9 @@ ang = 30
 
 compte=1
 
+found = False
+count = 0
+
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     pwm_12.ChangeDutyCycle(0)
@@ -100,7 +103,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
 
     if len(faces) == 0 :
-
+        
+        count = count + 1
         print("pas de face")
 
         # Give dir for a human
@@ -116,12 +120,16 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         else :
 
             # deplacement aleatoire
-            print("deplacement aleatoire")
-            ls.write('z')
+            if (found == True) :
+                if count <= 3 :
+                    print("deplacement aleatoire")
+                    ls.write('z')
+                else:
+                    found = False
 
 
     else :
-
+         
         print("y a une faces")
 
         #cv2.imshow('img', frame)
@@ -168,21 +176,20 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         elif xMil > (width/2)+30:
             ls.write('d')
         else :
+            found = True
+            count = 0
             ls.write('s')
             estimate_direction(frame, pwm_12, pwm_32)
-        """ 
-        if (width/2)-30 < xMil < (width/2)+30 :
-            if  50 < yMil < height-80 :
-                ls.write('s')
-                estimate_direction(frame, pwm_12, pwm_32)
-        """  
-                
+     
+    rawCapture.truncate(0)
+    
+    """
     time_end = time.perf_counter()
     print(time_end-time_start)
-    rawCapture.truncate(0)
+    
     i=i+1
 
-
+    
     curr_time = time.perf_counter()
     if i == 1 :
         t = time.perf_counter()
@@ -197,7 +204,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
         fichier_fps.write(str(t0-t)+" "+str(time_end-time_start)+"\n")
 
-
+    """
 
 pwm_12.stop()
 pwm_32.stop()
