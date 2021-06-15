@@ -168,7 +168,7 @@ class PoseEstimator:
         if yPetit-yGrand > 0: # tete tournee a droite
             dir_32 = 90 - facteur*(yPetit-yGrand)
         else: # tete tournee a gauche
-            dir_32 = 90 + facteur*abs(yPetit-yGrand)
+            dir_32 = 90 + 1.5*facteur*abs(yPetit-yGrand)
         """
         if xPetit < xGrand :
             print("\ttete tournee a gauche")
@@ -190,7 +190,7 @@ class PoseEstimator:
         #print(dir_12)
         #print(dir_32)
         pwm_12.ChangeDutyCycle(self.angle_to_percent(dir_12))
-        pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_12))
+        pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_32))
 
         """
         # Draw all the lines
