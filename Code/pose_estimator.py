@@ -181,7 +181,8 @@ class PoseEstimator:
             point_2d[7]), color, line_width, cv2.LINE_AA)
         cv2.line(image, tuple(point_2d[3]), tuple(
             point_2d[8]), color, line_width, cv2.LINE_AA)
-        ""
+        """
+        
     def draw_axis(self, img, R, t):
         points = np.float32(
             [[30, 0, 0], [0, 30, 0], [0, 0, 30], [0, 0, 0]]).reshape(-1, 3)
