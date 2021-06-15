@@ -156,12 +156,17 @@ class PoseEstimator:
         xGrand = int((point_2d[5][0] + point_2d[7][0])/2)
         yGrand = int((point_2d[5][1] + point_2d[7][1])/2)
         
+        
+        
         if xPetit < xGrand :
             print("\ttete tournee a gauche")
+            print("\txdiff : ",xPetit-xGrand)
         else:
-            print("\ttete tournee a droite")      
+            print("\ttete tournee a droite")
+            print("\txdiff : ",xPetit-xGrand)
         
         cv2.circle(image, (xPetit,yPetit), radius=2, color=(0, 0, 255), thickness=1)
+        cv2.circle(image, (xGrand,yGrand), radius=2, color=(0, 0, 255), thickness=1)
                   
         facteur = 3
         dir_12 = 90 + direction[0] * facteur * -1
