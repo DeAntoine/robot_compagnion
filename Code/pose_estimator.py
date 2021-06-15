@@ -176,6 +176,7 @@ class PoseEstimator:
         dir_12 = 90 + direction[0] * facteur * -1 # droite / gauche
         
         """
+        facteur = 3
         dir_32 = 90 + direction[1] * facteur
 
         #print(dir_12)
