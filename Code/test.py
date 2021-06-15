@@ -186,12 +186,12 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     print(time_end-time_start)
 
     i=i+1
-        """
+        
         if (width/2)-30 < xMil < (width/2)+30 :
             if  50 < yMil < height-80 :
                 ls.write('s')
                 estimate_direction(frame, pwm_12, pwm_32)
-        """
+        
     if is_graphe :
         time_end = time.perf_counter()
         print(time_end-time_start)
