@@ -91,7 +91,7 @@ def estimate_direction(frame, pwm_12, pwm_32):
 
         # Try pose estimation with 68 points.
         pose = pose_estimator.solve_pose_by_68_points(marks)
-
+        """
         # Stabilize the pose.
         steady_pose = []
         pose_np = np.array(pose).flatten()
@@ -100,6 +100,7 @@ def estimate_direction(frame, pwm_12, pwm_32):
             steady_pose.append(ps_stb.state[0])
         steady_pose = np.reshape(steady_pose, (-1, 3))
         #print(steady_pose)
+        """
         # Uncomment following line to draw pose annotation on frame.
         pose_estimator.draw_annotation_box(frame, pose[0], pose[1], pwm_12,pwm_32,color=(255, 128, 128))
 
