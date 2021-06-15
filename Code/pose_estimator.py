@@ -157,9 +157,9 @@ class PoseEstimator:
         yGrand = int((point_2d[5][1] + point_2d[7][1])/2)
         
         if xPetit < xGrand :
-            print("\ttete tournee a gauche)
+            print("\ttete tournee a gauche")
         else:
-            print("\ttete tournee a droite)      
+            print("\ttete tournee a droite")      
         
         cv2.circle(image, (xPetit,yPetit), radius=2, color=(0, 0, 255), thickness=1)
                   
