@@ -144,26 +144,35 @@ class PoseEstimator:
         point_3d.append((-front_size, -front_size, front_depth))
         point_3d = np.array(point_3d, dtype=np.float).reshape(-1, 3)
 
-
         # Map to 2d image points
         (point_2d, _) = cv2.projectPoints(point_3d,rotation_vector,translation_vector,self.camera_matrix,self.dist_coeefs)
         point_2d = np.int32(point_2d.reshape(-1, 2))
 
-
         direction = (point_2d[0]+point_2d[1]+point_2d[2]+point_2d[3])/4 - (point_2d[5]+point_2d[6]+point_2d[7]+point_2d[8])/4
-
-
+        
+        xPetit = int((point_2d[0][0] + point_2d[2][0])/2)
+        yPetit = int((point_2d[0][1] + point_2d[2][1])/2)
+        
+        xGrand = int((point_2d[5][0] + point_2d[7][0])/2)
+        yGrand = int((point_2d[5][1] + point_2d[7][1])/2)
+        
+        if xPetit < xGrand :
+            print("\ttete tournee a gauche)
+        else:
+            print("\ttete tournee a droite)      
+        
+        cv2.circle(image, (xPetit,yPetit), radius=2, color=(0, 0, 255), thickness=1)
+                  
         facteur = 3
         dir_12 = 90 + direction[0] * facteur * -1
         dir_32 = 90 + direction[1] * facteur
 
-
-        print(dir_12)
-        print(dir_32)
+        #print(dir_12)
+        #print(dir_32)
         pwm_12.ChangeDutyCycle(self.angle_to_percent(dir_12))
         pwm_32.ChangeDutyCycle(self.angle_to_percent(dir_32))
 
-
+        """
         # Draw all the lines
         cv2.polylines(image, [point_2d], True, color, line_width, cv2.LINE_AA)
 
@@ -172,7 +181,7 @@ class PoseEstimator:
             point_2d[7]), color, line_width, cv2.LINE_AA)
         cv2.line(image, tuple(point_2d[3]), tuple(
             point_2d[8]), color, line_width, cv2.LINE_AA)
-
+        ""
     def draw_axis(self, img, R, t):
         points = np.float32(
             [[30, 0, 0], [0, 30, 0], [0, 0, 30], [0, 0, 0]]).reshape(-1, 3)
