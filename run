@@ -40,16 +40,16 @@ argument_string=""
 for arg in $*
 do
     if [ "$arg" = "-g" ]; then
-      $graphe=true
-      $argument_string=$argument_string+"-g "
+      graphe=true
+      argument_string=$argument_string+"-g "
     fi
     if [ "$arg" = "-d" ]; then
-      $debug=true
-      $argument_string=$argument_string+"-d "
+      debug=true
+      argument_string=$argument_string+"-d "
     fi
     if [ "$arg" = "-v" ]; then
-      $verbose=true
-      $argument_string=$argument_string+"-v "
+      verbose=true
+      argument_string=$argument_string+"-v "
 
     fi
 done
@@ -58,7 +58,7 @@ done
 if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
     cd Code
-    echo_debug "python3 Code/test.py" $debug
+    echo_debug "python3 Code/test.py $argument_string" $debug
 
     if [ "$debug" = "true" ]; then
       python3 test.py $argument_string
