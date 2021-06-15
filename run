@@ -10,7 +10,7 @@ echo_cmd(){
 	echo -e "\t${ORANGE}$1${NC}"
 }
 echo_debug(){
-  if [ $2 = true ]; then
+  if [ $2 = "true" ]; then
 	  echo -e "${LIGHT_CYAN}$1${NC}"
 	fi
 }
