@@ -4,7 +4,7 @@ import liaison_serie as ls
 from face_detector_yolo import getFaces
 from picamera import PiCamera
 from picamera.array import PiRGBArray
-from estimate_head_pose import estimate_direction
+from estimate_head_pose import estimate_direction, estimate_direction_face
 from argparse import ArgumentParser
 from multiprocessing import Process, Queue
 from mark_detector import MarkDetector
