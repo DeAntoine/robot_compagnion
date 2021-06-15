@@ -79,8 +79,8 @@ def estimate_direction_face(frame, face, pwm_12, pwm_32):
         #print("face detected")
         #print("face detected")
         # Detect landmarks from image of 128x128.
-        face_img = frame[facebox[1]: facebox[3],
-                         facebox[0]: facebox[2]]
+        face_img = frame[facebox[0]: facebox[2],
+                         facebox[1]: facebox[3]]
         face_img = cv2.resize(face_img, (CNN_INPUT_SIZE, CNN_INPUT_SIZE))
         face_img = cv2.cvtColor(face_img, cv2.COLOR_BGR2RGB)
         
