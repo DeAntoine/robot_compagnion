@@ -23,9 +23,13 @@ import sys
 '''
 Initialisation du programme
 '''
-
-if len(sys.argv) > 0 :
-    print ('Argument List:', str(sys.argv))
+is_verbose=False
+is_graphe=False
+if len(sys.argv) > 1 :
+    if '-v' in str(sys.argv) :
+        is_verbose=True
+    if '-g' in str(sys.argv) :
+        is_graphe=True
 
 
 GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
@@ -75,35 +79,24 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     pwm_12.ChangeDutyCycle(0)
     pwm_32.ChangeDutyCycle(0)
-    time_start = time.perf_counter()
-    curr_time = time.perf_counter()
-    if i != 0 :
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-        fichier.write(str(curr_time-t0)+" 0\n")
-        compte=compte+1
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+    if is_graphe :
+        time_start = time.perf_counter()
+        curr_time = time.perf_counter()
+        if i != 0 :
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+            fichier.write(str(curr_time-t0)+" 0\n")
+            compte=compte+1
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
     frame = frame1.array
 
-    #cv2.imshow('img', frame)
-
-    #cv2.waitKey(1)
-    
     #detect faces
     faces = getFaces(frame)
-    
-    """
-    curr_time = time.perf_counter()
-    if i != 0 :
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-        fichier.write(str(curr_time-t0)+" 0\n")
-        compte=compte+1
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-    """
-
 
     if len(faces) == 0 :
-        
+        if is_verbose :
+            print("pas de face")
+
         count = count + 1
         print("pas de face")
 
@@ -111,15 +104,18 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         dir_people = dp.detect(frame)
 
         if dir_people != "r":
-
             # Send it to arduino
-            print("une personne a ete detecte et pas son visage")
-            print(dir_people)
+            if is_verbose :
+                print("une personne a ete detecte et pas son visage")
+                print(dir_people)
             ls.write(dir_people)
 
         else :
 
             # deplacement aleatoire
+            if is_verbose :
+                print("deplacement aleatoire")
+            ls.write('z')
             if found == True :
                 print("trouve mais plus detecte, count = ", count)
                 if count > 3 :
@@ -132,7 +128,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
 
     else :
-         
+        if is_verbose :
+            print("y a une faces")
+
         print("y a une faces")
 
         #cv2.imshow('img', frame)
@@ -140,22 +138,19 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
         # detect head pose
         # ang = hpe.estimate_pose(frame)
+        if is_graphe :
+            curr_time = time.perf_counter()
+            if i != 0 :
+                fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+                fichier.write(str(curr_time-t0)+" 0\n")
+                compte=compte+1
+                fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
-        curr_time = time.perf_counter()
-        if i != 0 :
-            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-            fichier.write(str(curr_time-t0)+" 0\n")
-            compte=compte+1
-            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-
-        #print(faces[0][0], faces[0][2], faces[0][1], faces[0][3])
-        
         # Trouver le centre du carré
         xMil = int((faces[0][0] + faces[0][2])/2)
         yMil = int((faces[0][1] + faces[0][3])/2)
     
-        #print(xMil, yMil)
-    
+
         #image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
         #cv2.imshow('img', frame)
         #cv2.waitKey(1)
@@ -163,9 +158,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         height, width = frame.shape[:2]
         largeur_tete = int((faces[0][2]-faces[0][0]))
         longueur_tete = int((faces[0][3]-faces[0][1]))
-
-        print("\t\tlargeur tete : ",largeur_tete)
-        print("\t\tlongueur tete : ",longueur_tete)
+        if is_verbose :
+            print("\t\tlargeur tete : ",largeur_tete)
+            print("\t\tlongueur tete : ",longueur_tete)
         
         if longueur_tete < 40 :
             ls.write('a')
@@ -183,29 +178,43 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             count = 0
             ls.write('s')
             estimate_direction(frame, pwm_12, pwm_32)
-     
+
     rawCapture.truncate(0)
-    
+
     """
     time_end = time.perf_counter()
     print(time_end-time_start)
-    
-    i=i+1
 
-    
+    i=i+1
+        """
+        if (width/2)-30 < xMil < (width/2)+30 :
+            if  50 < yMil < height-80 :
+                ls.write('s')
+                estimate_direction(frame, pwm_12, pwm_32)
+        """
+    if is_graphe :
+        time_end = time.perf_counter()
+        print(time_end-time_start)
+        rawCapture.truncate(0)
+        i=i+1
+
+        curr_time = time.perf_counter()
+        if i == 1 :
+            t = time.perf_counter()
+
     curr_time = time.perf_counter()
     if i == 1 :
         t = time.perf_counter()
 
-    if i != 0 :
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-        fichier.write(str(curr_time-t0)+" 0\n")
-        if i == 100 :
-            break
-        compte=1
-        t0 = time.perf_counter()
-        fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
-        fichier_fps.write(str(t0-t)+" "+str(time_end-time_start)+"\n")
+        if i != 0 :
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+            fichier.write(str(curr_time-t0)+" 0\n")
+            if i == 100 :
+                break
+            compte=1
+            t0 = time.perf_counter()
+            fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
+            fichier_fps.write(str(t0-t)+" "+str(time_end-time_start)+"\n")
 
     """
 

@@ -10,7 +10,7 @@ echo_cmd(){
 	echo -e "\t${ORANGE}$1${NC}"
 }
 echo_debug(){
-  if [ "$2" = "-d" ]; then
+  if [ $2 = true ]; then
 	  echo -e "${LIGHT_CYAN}$1${NC}"
 	fi
 }
@@ -29,35 +29,67 @@ echo_help(){
 
 cd ~/Documents/robot_compagnon/
 #update git
-echo_debug "git pull" $2
+echo_debug "git pull" $debug
 sudo git pull
+
+debug=false
+graphe=false
+verbose=false
+
+$argument_string=""
+for arg in $*
+do
+    if [ "$arg" = "-g" ]; then
+      $graphe=true
+      $argument_string=$argument_string+"-g "
+    fi
+    if [ "$arg" = "-d" ]; then
+      $debug=true
+      $argument_string=$argument_string+"-d "
+    fi
+    if [ "$arg" = "-v" ]; then
+      $verbose=true
+      $argument_string=$argument_string+"-v "
+
+    fi
+done
+
 
 if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
     cd Code
-    echo_debug "python3 Code/test.py" $2
-    #python3 test.py 2> test.log
-    python3 test.py
+    echo_debug "python3 Code/test.py" $debug
+
+    if [ $debug = true ]; then
+      python3 test.py $argument_string
+    else
+      python3 test.py $argument_string 2> run.log
+    fi
     cd ..
-    echo_debug "bash script.sh" $2
-    sudo bash script.sh
-    outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
-    echo_debug "Graphe généré dans $outputGraphe" $2
-    if [ "$2" = "-g" ]; then
+    if [ $graphe = true ]; then
+      echo_debug "bash script.sh" $debug
+      sudo bash script.sh
+      outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
+      echo_debug "Graphe généré dans $outputGraphe" $debug
       echo "Graphe généré dans $outputGraphe"
       gpicview $outputGraphe &
     fi
+
   elif [ "$1" = "main" ]; then
     cd Code
-    echo_debug "python3 Code/test.py" $2
-    #python3 test.py 2> test.log
-    python3 test.py -v -g
+    echo_debug "python3 Code/main.py" $debug
+
+    if [ $debug = true ]; then
+      python3 test.py $argument_string
+    else
+      python3 test.py $argument_string 2> run.log
+    fi
     cd ..
-    echo_debug "bash script.sh" $2
-    sudo bash script.sh
-    outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
-    echo_debug "Graphe généré dans $outputGraphe" $2
-    if [ "$2" = "-g" ]; then
+    if [ $graphe = true ]; then
+      echo_debug "bash script.sh" $debug
+      sudo bash script.sh
+      outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
+      echo_debug "Graphe généré dans $outputGraphe" $debug
       echo "Graphe généré dans $outputGraphe"
       gpicview $outputGraphe &
     fi
