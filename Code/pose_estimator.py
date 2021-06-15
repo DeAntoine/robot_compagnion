@@ -166,9 +166,9 @@ class PoseEstimator:
             dir_12 = 90 + facteur*abs(xPetit-xGrand)
         
         if yPetit-yGrand > 0: # tete tournee a droite
-            dir_32 = 90 - facteur*(yPetit-yGrand)
+            dir_32 = 90 + facteur*(yPetit-yGrand)
         else: # tete tournee a gauche
-            dir_32 = 90 + 1.5*facteur*abs(yPetit-yGrand)
+            dir_32 = 90 - 2*facteur*abs(yPetit-yGrand)
         """
         if xPetit < xGrand :
             print("\ttete tournee a gauche")
