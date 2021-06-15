@@ -158,10 +158,12 @@ class PoseEstimator:
         
         print("\txdiff : ",xPetit-xGrand) 
         
+        facteur = 2
+        
         if xPetit-xGrand > 0: # tete tournee a droite
-            dir_12 = 90 - (xPetit-xGrand)
+            dir_12 = 90 - facteur*(xPetit-xGrand)
         else: # tete tournee a gauche
-            dir_12 = 90 + abs(xPetit-xGrand)
+            dir_12 = 90 + facteur*abs(xPetit-xGrand)
             
         """
         if xPetit < xGrand :
