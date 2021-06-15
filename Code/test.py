@@ -18,9 +18,14 @@ import cv2
 import time
 import serial
 
+import sys
+
 '''
 Initialisation du programme
 '''
+
+if len(sys.argv) > 0 :
+    print 'Argument List:', str(sys.argv)
 
 
 GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
