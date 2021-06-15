@@ -121,8 +121,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
             # deplacement aleatoire
             if found == True :
+                print("trouve mais plus detecte, count = ", count)
                 if count > 3 :
-                    print("deplacement aleatoire")
+                    #print("deplacement aleatoire")
                     ls.write('z')
                     found = False
             else:
