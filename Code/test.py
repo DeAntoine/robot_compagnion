@@ -40,6 +40,9 @@ GPIO.setup(15, GPIO.OUT)
 GPIO.output(15, GPIO.HIGH)
 print("pouette")
 
+while True :
+    pwm_12.ChangeDutyCycle(8.25)
+    pwm_32.ChangeDutyCycle(8.25)
 
 camera = PiCamera()
 camera.resolution = (320, 240)
