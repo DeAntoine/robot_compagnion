@@ -120,12 +120,14 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         else :
 
             # deplacement aleatoire
-            if (found == True) :
-                if count <= 3 :
+            if found == True :
+                if count > 3 :
                     print("deplacement aleatoire")
                     ls.write('z')
-                else:
                     found = False
+            else:
+                print("deplacement aleatoire")
+                ls.write('z')
 
 
     else :
