@@ -20,6 +20,9 @@ import serial
 
 import sys
 
+import matplotlib
+matplotlib.use('Agg')
+
 '''
 Initialisation du programme
 '''
