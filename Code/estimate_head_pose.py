@@ -111,7 +111,7 @@ def estimate_direction(frame, pwm_12, pwm_32):
         #pose_estimator.draw_axes(frame, steady_pose[0], steady_pose[1])
    
     # Show preview.
-    cv2.imshow("Preview", frame)
-    cv2.waitKey(1)
+    #cv2.imshow("Preview", frame)
+    #cv2.waitKey(1)
 
 
