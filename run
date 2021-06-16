@@ -28,9 +28,6 @@ echo_help(){
 }
 
 cd ~/Documents/robot_compagnon/
-#update git
-echo_debug "git pull" $debug
-sudo git pull
 
 debug=false
 graphe=false
@@ -54,6 +51,9 @@ do
     fi
 done
 
+#update git
+echo_debug "git pull" $debug
+sudo git pull
 
 if [ $# > 1 ]; then
   if [ "$1" = "test" ]; then
