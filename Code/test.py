@@ -182,7 +182,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             print("\t\tlargeur tete : ",largeur_tete)
             print("\t\tlongueur tete : ",longueur_tete)
         
-        if longueur_tete < 40 :
+        if longueur_tete < 50 :
             ls.write('a')
             
         elif longueur_tete > 90 :
