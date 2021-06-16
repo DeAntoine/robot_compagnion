@@ -83,6 +83,8 @@ if [ $# > 1 ]; then
   else
     echo_help
   fi
+  echo_debug "python3 cleanup.py" $debug
+  python3 cleanup.py
 else
   echo_help
 fi
