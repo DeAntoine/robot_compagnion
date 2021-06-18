@@ -96,7 +96,9 @@ if [ $# > 1 ]; then
     fi
   elif [ "$1" = "start" ]; then
     echo "i'm running, make run start for the real main" > startup.log
-          python3 test.py $argument_string
+    cd Code
+    python3 test.py $argument_string
+    cd ..
     echo "Startup is ended" > startup.log
   elif [ "$1" = "stop" ]; then
 
