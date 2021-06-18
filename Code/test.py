@@ -78,8 +78,9 @@ rawCapture = PiRGBArray(camera, size = (320,240))
 #while camera.isOpened():
 
 i = 0
-fichier = open("../resultat_etat.txt", "w+") # "a" pour append et "w" pour écraser
-fichier_fps = open("../resultat_fps.txt", "w+") # "a" pour append et "w" pour écraser
+if is_graphe :
+    fichier = open("../resultat_etat.txt", "w+") # "a" pour append et "w" pour écraser
+    fichier_fps = open("../resultat_fps.txt", "w+") # "a" pour append et "w" pour écraser
 
 t0 = time.perf_counter()
 
@@ -136,15 +137,16 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             # deplacement aleatoire
             if is_verbose :
                 print("deplacement aleatoire")
-            ls.write('z')
             if found == True :
-                print("trouve mais plus detecte, count = ", count)
+                if is_verbose :
+                    print("trouve mais plus detecte, count = ", count)
                 if count > 3 :
                     #print("deplacement aleatoire")
                     ls.write('z')
                     found = False
             else:
-                print("deplacement aleatoire")
+                if is_verbose :
+                    print("deplacement aleatoire")
                 ls.write('z')
 
 
