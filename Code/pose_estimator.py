@@ -156,8 +156,8 @@ class PoseEstimator:
         xGrand = int((point_2d[5][0] + point_2d[7][0])/2)
         yGrand = int((point_2d[5][1] + point_2d[7][1])/2)
         
-        print("\txdiff : ",xPetit-xGrand) 
-        print("\tydiff : ",yPetit-yGrand) 
+        #print("\txdiff : ",xPetit-xGrand)
+        #print("\tydiff : ",yPetit-yGrand)
         facteur = 2
         
         if xPetit-xGrand > 0: # tete tournee a droite
