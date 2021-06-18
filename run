@@ -21,6 +21,7 @@ echo_help(){
     echo_cmd "run main"
     echo_cmd "run test"
     echo_cmd "run start"
+    echo_cmd "run stop"
     echo_cmd 'CMD [-d] debug'
     echo_cmd 'CMD [-g] show graph'
     echo_cmd 'CMD [-v] verbose'
@@ -77,9 +78,29 @@ if [ $# > 1 ]; then
 
   elif [ "$1" = "main" ]; then
     cd Code
-    python3 test.py
+    echo_debug "python3 Code/main.py$argument_string" $debug
+
+    if [ "$debug" = "true" ]; then
+      python3 test.py $argument_string
+    else
+      python3 test.py $argument_string 2> run.log
+    fi
+    cd ..
+    if [ "$graphe" = "true" ]; then
+      echo_debug "bash script.sh" $debug
+      sudo bash script.sh
+      outputGraphe=$(ls -lart | grep .png | cut -d ' ' -f11 | tail -n 1)
+      echo_debug "Graphe généré dans $outputGraphe" $debug
+      echo "Graphe généré dans $outputGraphe"
+      gpicview $outputGraphe &
+    fi
   elif [ "$1" = "start" ]; then
     echo "i'm running, make run start for the real main" > startup.log
+          python3 test.py $argument_string
+    echo "Startup is ended" > startup.log
+  elif [ "$1" = "stop" ]; then
+
+
   else
     echo_help
   fi
