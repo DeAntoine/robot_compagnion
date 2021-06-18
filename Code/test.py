@@ -215,7 +215,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             count = 0
             ls.write('s')
             GPIO.output(LED_VERTE, GPIO.HIGH)
-            estimate_direction(frame, pwm_12, pwm_32)
+            estimate_direction(frame, pwm_12, pwm_32,is_verbose)
 
     rawCapture.truncate(0)
 
