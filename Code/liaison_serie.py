@@ -5,7 +5,7 @@ ser.close()
 ser.open() 
 
 if ser.isOpen():
-    print("ok")
+    print("connexion ok")
 
 def read():
     #ser.readline()
