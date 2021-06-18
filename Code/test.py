@@ -94,11 +94,12 @@ count = 0
 
 #pwm_12.ChangeDutyCycle(0)
 #pwm_32.ChangeDutyCycle(0)
-
-print("Debut du traitement")
+if is_verbose :
+    print("Debut du programme")
 
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-
+    if is_verbose :
+        print("Recuperation video")
     GPIO.output(LED_BLEU, GPIO.HIGH)
     #pwm_12.ChangeDutyCycle(0)
     #pwm_32.ChangeDutyCycle(0)
