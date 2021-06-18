@@ -1,7 +1,7 @@
 import detect_people as dp
 import liaison_serie as ls
 #import estimate_head_pose as hpe
-from face_detector_yolo import getFaces
+#from face_detector_yolo import getFaces
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 from estimate_head_pose import estimate_direction, get_face_bis
