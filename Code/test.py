@@ -4,7 +4,7 @@ import liaison_serie as ls
 from face_detector_yolo import getFaces
 from picamera import PiCamera
 from picamera.array import PiRGBArray
-from estimate_head_pose import estimate_direction
+from estimate_head_pose import estimate_direction, get_faces_bis
 from argparse import ArgumentParser
 from multiprocessing import Process, Queue
 from mark_detector import MarkDetector
@@ -29,7 +29,6 @@ Initialisation du programme
 LASER=15
 LED_VERTE=11
 LED_BLEU=13
-
 
 
 is_verbose=False
@@ -112,7 +111,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     frame = frame1.array
 
     #detect faces
-    faces = getFaces(frame)
+    #faces = getFaces(frame)
+    faces = get_faces_bis(frame)
 
     if len(faces) == 0 :
         if is_verbose :
