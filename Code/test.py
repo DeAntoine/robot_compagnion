@@ -114,7 +114,8 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
     #faces = getFaces(frame)
     faces = get_face_bis(frame)
 
-    if len(faces) == 0 :
+    #if len(faces) == 0 :
+    if facebox is not None:
         if is_verbose :
             print("pas de face")
 
