@@ -120,8 +120,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             print("pas de face")
 
         count = count + 1
-        print("pas de face")
-
+       
         # Give dir for a human
         dir_people = dp.detect(frame)
 
