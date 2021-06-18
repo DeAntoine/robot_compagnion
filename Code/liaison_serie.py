@@ -12,5 +12,5 @@ def read():
     return ser.read()
 
 def write(c):
-    #ser.write(bytes(c.encode()))
-    print(c)
+    c = 's'
+    ser.write(bytes(c.encode()))
