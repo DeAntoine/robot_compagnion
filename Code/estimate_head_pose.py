@@ -1,10 +1,3 @@
-"""Demo code shows how to estimate human head pose.
-Currently, human face is detected by a detector from an OpenCV DNN module.
-Then the face box is modified a little to suits the need of landmark
-detection. The facial landmark detection is done by a custom Convolutional
-Neural Network trained with TensorFlow. After that, head pose is estimated
-by solving a PnP problem.
-"""
 from argparse import ArgumentParser
 from multiprocessing import Process, Queue
 from picamera import PiCamera
@@ -14,20 +7,15 @@ import cv2
 import numpy as np
 
 from mark_detector import MarkDetector
-from os_detector import detect_os
 from pose_estimator import PoseEstimator
 from stabilizer import Stabilizer
 
 import RPi.GPIO as GPIO
 import time
 
-print("OpenCV version: {}".format(cv2.__version__))
-
-# multiprocessing may not work on Windows and macOS, check OS for safety.
-detect_os()
-
 CNN_INPUT_SIZE = 128
 
+mark_detector = MarkDetector()  
 
 def get_face(detector, img_queue, box_queue):
     """Get face from image queue. This function is used for multiprocessing"""
@@ -36,6 +24,10 @@ def get_face(detector, img_queue, box_queue):
         box = detector.extract_cnn_facebox(image)
         box_queue.put(box)
 
+def get_face_bis(frame):
+    facebox = mark_detector.extract_cnn_facebox(frame)
+    return facebox
+        
 def angle_to_percent (angle) :
     if angle > 180 or angle < 0 :
         return False
@@ -48,8 +40,6 @@ def angle_to_percent (angle) :
 
     return start + angle_as_percent
 
-mark_detector = MarkDetector()  
-  
 def estimate_direction(frame, pwm_12, pwm_32):
          
     print("estimate direction")
