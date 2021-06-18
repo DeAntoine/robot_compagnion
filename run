@@ -79,7 +79,7 @@ if [ $# > 1 ]; then
     cd Code
     python3 test.py
   elif [ "$1" = "start" ]; then
-    echo "i'm running, make run start for the real main"
+    echo "i'm running, make run start for the real main" > startup.log
   else
     echo_help
   fi
