@@ -154,8 +154,6 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if is_verbose :
             print("y a une faces")
 
-        print("y a une faces")
-           
             
         #print("/tfaces[0] : ", faces[0])
         #print("/tfaces[3] : ", faces[3])
