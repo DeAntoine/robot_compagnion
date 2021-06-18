@@ -42,7 +42,7 @@ def angle_to_percent (angle) :
 
 def estimate_direction(frame, pwm_12, pwm_32):
          
-    print("estimate direction")
+    print("\t\tEstimation de l'orientation du visage")
     height, width = frame.shape[:2]
     pose_estimator = PoseEstimator(img_size=(height, width))
 
