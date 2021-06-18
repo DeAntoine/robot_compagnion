@@ -195,7 +195,7 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         
         GPIO.output(LED_VERTE, GPIO.LOW)
 
-        if is_verbose :
+        #if is_verbose :
             #print("\t\tlargeur tete : ",largeur_tete)
             #print("\t\tlongueur tete : ",longueur_tete)
         
