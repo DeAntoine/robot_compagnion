@@ -112,10 +112,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     #detect faces
     #faces = getFaces(frame)
-    facebox = get_face_bis(frame)
+    faces = get_face_bis(frame)
 
     #if len(faces) == 0 :
-    if facebox is not None:
+    if faces is None:
         if is_verbose :
             print("pas de face")
 
@@ -169,17 +169,21 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
                 fichier.write(str(curr_time-t0)+" "+str(compte)+"\n")
 
         # Trouver le centre du carré
-        xMil = int((faces[0][0] + faces[0][2])/2)
-        yMil = int((faces[0][1] + faces[0][3])/2)
+        #xMil = int((faces[0][0] + faces[0][2])/2)
+        #yMil = int((faces[0][1] + faces[0][3])/2)
     
-
+        xMil = int((faces[0] + faces[2])/2)
+        yMil = int((faces[1] + faces[3])/2)
         #image = cv2.circle(frame, (xMil,yMil), radius=3, color=(0, 0, 255), thickness=2)
         #cv2.imshow('img', frame)
         #cv2.waitKey(1)
         
         height, width = frame.shape[:2]
-        largeur_tete = int((faces[0][2]-faces[0][0]))
-        longueur_tete = int((faces[0][3]-faces[0][1]))
+        #largeur_tete = int((faces[0][2]-faces[0][0]))
+        #longueur_tete = int((faces[0][3]-faces[0][1]))
+        
+        largeur_tete = int((faces[2]-faces[0]))
+        longueur_tete = int((faces[3]-faces[1]))
         GPIO.output(LED_VERTE, GPIO.LOW)
 
         if is_verbose :
