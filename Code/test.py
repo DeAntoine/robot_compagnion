@@ -201,10 +201,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         elif longueur_tete > 90 :
             ls.write('r')
         
-        elif xMil < (width/2)-30 :
+        elif xMil < (width/2)-50 :
             ls.write('g')
             
-        elif xMil > (width/2)+30:
+        elif xMil > (width/2)+50:
             ls.write('d')
         else :
             found = True
