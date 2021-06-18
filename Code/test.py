@@ -184,10 +184,12 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         
         largeur_tete = int((faces[2]-faces[0]))
         longueur_tete = int((faces[3]-faces[1]))
+        
+        
         GPIO.output(LED_VERTE, GPIO.LOW)
 
         if is_verbose :
-            print("\t\tlargeur tete : ",largeur_tete)
+            #print("\t\tlargeur tete : ",largeur_tete)
             print("\t\tlongueur tete : ",longueur_tete)
         
         if longueur_tete < 50 :
