@@ -156,11 +156,11 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         print("y a une faces")
            
             
-        print("/tfaces[0] : ", faces[0])
-        print("/tfaces[3] : ", faces[3])
-        #cv2.rectangle(frame,faces[0],faces[3],(0,255,0),3)
-        #cv2.imshow('img', frame)
-        #cv2.waitKey(1)
+        #print("/tfaces[0] : ", faces[0])
+        #print("/tfaces[3] : ", faces[3])
+        cv2.rectangle(frame,(faces[0], faces[1]),(faces[2], faces[3]),(0,255,0),3)
+        cv2.imshow('img', frame)
+        cv2.waitKey(1)
 
         # detect head pose
         # ang = hpe.estimate_pose(frame)
