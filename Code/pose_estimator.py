@@ -170,7 +170,7 @@ class PoseEstimator:
         else: # tete tournee a gauche
             dir_32 = 110 - 2*facteur*abs(yPetit-yGrand)
         
-        cv2.line(image, (xPetit, yPetit), (xGrand, yGrand), color, line_width, cv2.LINE_AA)
+        cv2.line(image, (xPetit, yPetit), (xGrand, yGrand), (0,0,255), 2)
         cv2.imshow("angle", image)
         cv2.waitKey(1)
         """
