@@ -100,7 +100,7 @@ if [ $# > 1 ]; then
     echo "Startup is ended" > startup.log
   elif [ "$1" = "stop" ]; then
     echo "Stop" > startup.log
-
+    kill $(ps fax | grep 'python3 test.py' | cut -d ' ' -f3 | tail -n 1)
   else
     echo_help
   fi
