@@ -133,15 +133,13 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             ls.write(dir_people)
 
         else :
-
             # deplacement aleatoire
-            if is_verbose :
-                print("deplacement aleatoire")
             if found == True :
                 if is_verbose :
                     print("trouve mais plus detecte, count = ", count)
                 if count > 3 :
-                    #print("deplacement aleatoire")
+                    if is_verbose :
+                        print("deplacement aleatoire")
                     ls.write('z')
                     found = False
             else:
