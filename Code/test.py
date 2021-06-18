@@ -120,7 +120,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     #if len(faces) == 0 :
     if faces is None:
-        
+
+        GPIO.output(LED_VERTE, GPIO.LOW)
+
         
         if is_verbose :
             print("\tPas de visage detecte")
