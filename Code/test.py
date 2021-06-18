@@ -63,7 +63,7 @@ GPIO.setup(LED_BLEU, GPIO.OUT)
 GPIO.output(LED_BLEU, GPIO.LOW)
 
 
-print("pouette")
+#print("pouette")
 """
 while True :
     pwm_12.ChangeDutyCycle(8.25)
@@ -95,6 +95,8 @@ count = 0
 #pwm_12.ChangeDutyCycle(0)
 #pwm_32.ChangeDutyCycle(0)
 
+print("Debut du traitement")
+
 for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     GPIO.output(LED_BLEU, GPIO.HIGH)
@@ -117,8 +119,10 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     #if len(faces) == 0 :
     if faces is None:
+        
+        
         if is_verbose :
-            print("pas de face")
+            print("\tPas de visage detecte")
         
         count = count + 1
        
@@ -128,29 +132,31 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         if dir_people != "r":
             # Send it to arduino
             if is_verbose :
-                print("une personne a ete detecte et pas son visage")
+                print("\t\tPersonne detectee")
                 print(dir_people)
             ls.write(dir_people)
 
         else :
             # deplacement aleatoire
             if found == True :
+                """
                 if is_verbose :
                     print("trouve mais plus detecte, count = ", count)
+                """
                 if count > 3 :
                     if is_verbose :
-                        print("deplacement aleatoire")
+                        print("\t\tDeplacement aleatoire")
                     ls.write('z')
                     found = False
             else:
                 if is_verbose :
-                    print("deplacement aleatoire")
+                    print("\t\tDeplacement aleatoire")
                 ls.write('z')
 
 
     else :
         if is_verbose :
-            print("y a une faces")
+            print("\tVisage detecte")
 
             
         #print("/tfaces[0] : ", faces[0])
@@ -189,9 +195,9 @@ for frame1 in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         
         GPIO.output(LED_VERTE, GPIO.LOW)
 
-        if is_verbose :
+        #if is_verbose :
             #print("\t\tlargeur tete : ",largeur_tete)
-            print("\t\tlongueur tete : ",longueur_tete)
+            #print("\t\tlongueur tete : ",longueur_tete)
         
         if longueur_tete < 50 :
             ls.write('a')
